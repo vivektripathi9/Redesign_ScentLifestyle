@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  output: "export",
   images: {
     remotePatterns: [
       {
@@ -31,6 +32,7 @@ const nextConfig: NextConfig = {
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     // Enable image optimization
     minimumCacheTTL: 60,
+    unoptimized: true, // Required for static export
   },
   // Enable compression
   compress: true,

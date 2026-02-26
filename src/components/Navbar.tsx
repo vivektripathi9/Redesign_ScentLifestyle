@@ -273,11 +273,11 @@ export default function Navbar() {
             <Image
               src="/Logo_scent.png"
               alt="Scent logo"
-              width={180}
-              height={36}
-              className="h-5 sm:h-6 md:h-7 lg:h-8 w-auto object-contain transition-opacity duration-300 group-hover:opacity-60"
+              width={80}
+              height={16}
+              className="h-3 sm:h-3.5 md:h-4 lg:h-4 w-auto object-contain transition-opacity duration-300 group-hover:opacity-60"
               priority
-              sizes="(max-width: 640px) 100px, (max-width: 768px) 140px, 180px"
+              sizes="(max-width: 640px) 60px, (max-width: 768px) 70px, 80px"
             />
           </a>
 

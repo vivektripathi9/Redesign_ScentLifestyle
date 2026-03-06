@@ -15,7 +15,7 @@ const menuItems = [
 
 const services = [
   { name: "Hair Services", href: "/services" },
-  { name: "Beauty Treatments", href: "/new-service" },
+  { name: "Beauty Treatments", href: "/beauty-essentials" },
   { name: "Nail Services", href: "/nails" },
   { name: "Skincare", href: "/new-service" },
   { name: "Makeup", href: "/bridal" },
@@ -109,6 +109,7 @@ export default function Navbar() {
   const [appointmentMessage, setAppointmentMessage] = useState("");
   const [showAppointmentSuccess, setShowAppointmentSuccess] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [closeTimeout, setCloseTimeout] = useState<NodeJS.Timeout | null>(null);
   const [appointmentForm, setAppointmentForm] = useState({
     name: "",
     email: "",
@@ -129,6 +130,15 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Cleanup timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (closeTimeout) {
+        clearTimeout(closeTimeout);
+      }
+    };
+  }, [closeTimeout]);
 
   const handleAppointmentSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -221,7 +231,7 @@ export default function Navbar() {
   // Search functionality
   const searchItems = [
     { name: "Hair Services", href: "/services", category: "Service" },
-    { name: "Beauty Treatments", href: "/new-service", category: "Service" },
+    { name: "Beauty Treatments", href: "/beauty-essentials", category: "Service" },
     { name: "Nail Services", href: "/nails", category: "Service" },
     { name: "Skincare", href: "/new-service", category: "Service" },
     { name: "Makeup", href: "/bridal", category: "Service" },
@@ -354,16 +364,25 @@ export default function Navbar() {
                 key={item}
                 className="relative cursor-pointer transition-all duration-300 ease-in-out group m-0"
                 onMouseEnter={() => {
+                  // Clear any pending close timeout
+                  if (closeTimeout) {
+                    clearTimeout(closeTimeout);
+                    setCloseTimeout(null);
+                  }
                   if (item === "Services") setIsServiceOpen(true);
                   if (item === "Franchise") setIsFranchiseOpen(true);
                   if (item === "Shops") setIsShopOpen(true);
                   if (item === "Contact") setIsContactOpen(true);
                 }}
                 onMouseLeave={() => {
-                  if (item === "Services") setIsServiceOpen(false);
-                  if (item === "Franchise") setIsFranchiseOpen(false);
-                  if (item === "Shops") setIsShopOpen(false);
-                  if (item === "Contact") setIsContactOpen(false);
+                  // Add a small delay before closing to allow smooth navigation
+                  const timeout = setTimeout(() => {
+                    if (item === "Services") setIsServiceOpen(false);
+                    if (item === "Franchise") setIsFranchiseOpen(false);
+                    if (item === "Shops") setIsShopOpen(false);
+                    if (item === "Contact") setIsContactOpen(false);
+                  }, 150);
+                  setCloseTimeout(timeout);
                 }}
               >
                 {item === "Services" ? (
@@ -411,14 +430,23 @@ export default function Navbar() {
                 {item === "Services" && isServiceOpen && (
                   <>
                     <div 
-                      className="absolute left-0 top-full z-50 h-1 w-56"
+                      className="absolute left-0 top-full z-50 h-2 w-56"
                       onMouseEnter={() => setIsServiceOpen(true)}
                       onMouseLeave={() => setIsServiceOpen(false)}
                     />
                     <div 
-                      className="absolute left-0 top-full z-50 mt-2 w-56 bg-white border border-gray-200 shadow-lg rounded-sm py-3"
-                      onMouseEnter={() => setIsServiceOpen(true)}
-                      onMouseLeave={() => setIsServiceOpen(false)}
+                      className="service-dropdown absolute left-0 top-full z-50 mt-2 w-56 bg-white border border-gray-200 shadow-lg rounded-sm py-3"
+                      onMouseEnter={() => {
+                        if (closeTimeout) {
+                          clearTimeout(closeTimeout);
+                          setCloseTimeout(null);
+                        }
+                        setIsServiceOpen(true);
+                      }}
+                      onMouseLeave={() => {
+                        const timeout = setTimeout(() => setIsServiceOpen(false), 150);
+                        setCloseTimeout(timeout);
+                      }}
                     >
                       {services.map((service) => (
                         <a
@@ -437,14 +465,23 @@ export default function Navbar() {
                 {item === "Franchise" && isFranchiseOpen && (
                   <>
                     <div 
-                      className="absolute left-0 top-full z-50 h-1 w-64"
+                      className="absolute left-0 top-full z-50 h-2 w-64"
                       onMouseEnter={() => setIsFranchiseOpen(true)}
                       onMouseLeave={() => setIsFranchiseOpen(false)}
                     />
                     <div 
-                      className="absolute left-0 top-full z-50 mt-2 w-64 bg-white border border-gray-200 shadow-lg rounded-sm py-2"
-                      onMouseEnter={() => setIsFranchiseOpen(true)}
-                      onMouseLeave={() => setIsFranchiseOpen(false)}
+                      className="franchise-dropdown absolute left-0 top-full z-50 mt-2 w-64 bg-white border border-gray-200 shadow-lg rounded-sm py-2"
+                      onMouseEnter={() => {
+                        if (closeTimeout) {
+                          clearTimeout(closeTimeout);
+                          setCloseTimeout(null);
+                        }
+                        setIsFranchiseOpen(true);
+                      }}
+                      onMouseLeave={() => {
+                        const timeout = setTimeout(() => setIsFranchiseOpen(false), 150);
+                        setCloseTimeout(timeout);
+                      }}
                     >
                       {franchiseItems.slice(0, 3).map((franchiseItem) => (
                         <a
@@ -473,14 +510,23 @@ export default function Navbar() {
                 {item === "Shops" && isShopOpen && (
                   <>
                     <div 
-                      className="absolute left-0 top-full z-50 h-1 w-72"
+                      className="absolute left-0 top-full z-50 h-2 w-72"
                       onMouseEnter={() => setIsShopOpen(true)}
                       onMouseLeave={() => setIsShopOpen(false)}
                     />
                     <div 
-                      className="absolute left-0 top-full z-50 mt-2 w-72 bg-white border border-gray-200 shadow-lg rounded-sm py-2"
-                      onMouseEnter={() => setIsShopOpen(true)}
-                      onMouseLeave={() => setIsShopOpen(false)}
+                      className="shop-dropdown absolute left-0 top-full z-50 mt-2 w-72 bg-white border border-gray-200 shadow-lg rounded-sm py-2"
+                      onMouseEnter={() => {
+                        if (closeTimeout) {
+                          clearTimeout(closeTimeout);
+                          setCloseTimeout(null);
+                        }
+                        setIsShopOpen(true);
+                      }}
+                      onMouseLeave={() => {
+                        const timeout = setTimeout(() => setIsShopOpen(false), 150);
+                        setCloseTimeout(timeout);
+                      }}
                     >
                       {shopCategories.map((category, index) => (
                         <div key={category.name} className={`px-5 py-2.5 ${index !== shopCategories.length - 1 ? 'border-b border-gray-100' : ''}`}>
@@ -511,14 +557,23 @@ export default function Navbar() {
                 {item === "Contact" && isContactOpen && (
                   <>
                     <div 
-                      className="absolute right-0 top-full z-50 h-1 w-72"
+                      className="absolute right-0 top-full z-50 h-2 w-72"
                       onMouseEnter={() => setIsContactOpen(true)}
                       onMouseLeave={() => setIsContactOpen(false)}
                     />
                     <div 
-                      className="absolute right-0 top-full z-50 mt-2 w-72 bg-white border border-gray-200 shadow-lg rounded-sm py-2"
-                      onMouseEnter={() => setIsContactOpen(true)}
-                      onMouseLeave={() => setIsContactOpen(false)}
+                      className="contact-dropdown absolute right-0 top-full z-50 mt-2 w-72 bg-white border border-gray-200 shadow-lg rounded-sm py-2"
+                      onMouseEnter={() => {
+                        if (closeTimeout) {
+                          clearTimeout(closeTimeout);
+                          setCloseTimeout(null);
+                        }
+                        setIsContactOpen(true);
+                      }}
+                      onMouseLeave={() => {
+                        const timeout = setTimeout(() => setIsContactOpen(false), 150);
+                        setCloseTimeout(timeout);
+                      }}
                     >
                       {contactItems.slice(0, 3).map((contactItem) => (
                         <a

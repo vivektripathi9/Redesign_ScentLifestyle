@@ -10,15 +10,15 @@ const advantages = [
   },
   {
     title: "Comprehensive Training",
-    description: "we provide extensive training programs for you and your staff, ensuring that your Salon Franchise in Bangalore operates smoothly and meets our high standards. From hair styling and skincare techniques to customer service and management, we cover it all.",
+    description: "We provide extensive training programs for you and your staff, ensuring that your Salon Franchise in Bangalore operates smoothly and meets our high standards. From hair styling and skincare techniques to customer service and management, we cover it all.",
   },
   {
     title: "Marketing and Promotional Support",
-    description: "our marketing team will help you create buzz around your new Salon Franchise in Bangalore through strategic campaigns, social media promotions, and local events. This ensures a steady stream of customers eager to experience SCENT's renowned services.",
+    description: "Our marketing team will help you create buzz around your new Salon Franchise in Bangalore through strategic campaigns, social media promotions, and local events. This ensures a steady stream of customers eager to experience SCENT's renowned services.",
   },
   {
     title: "Proven Business Model",
-    description: "with years of experience in the industry, we have developed a successful business model that reduces risk and increases profitability. When you choose a Salon Franchise in Bangalore with SCENT, you're leveraging a proven formula that works.",
+    description: "With years of experience in the industry, we have developed a successful business model that reduces risk and increases profitability. When you choose a Salon Franchise in Bangalore with SCENT, you're leveraging a proven formula that works.",
   },
   {
     title: "Exclusive Access to Premium Products",
@@ -30,27 +30,27 @@ const steps = [
   {
     number: "1",
     title: "Initial Consultation",
-    description: "our team will discuss your goals, budget, and location preferences to determine the best strategy for your salon franchise.",
+    description: "Our team will discuss your goals, budget, and location preferences to determine the best strategy for your salon franchise.",
   },
   {
     number: "2",
     title: "Franchise Agreement",
-    description: "once the terms are agreed upon, we will sign a franchise agreement that outlines your responsibilities, the support you will receive, and other key details.",
+    description: "Once the terms are agreed upon, we will sign a franchise agreement that outlines your responsibilities, the support you will receive, and other key details.",
   },
   {
     number: "3",
     title: "Site Selection and Setup",
-    description: "our experts will help you choose the ideal location for your Salon Franchise in Bangalore, ensuring maximum visibility and foot traffic. We will also assist with the interior design, layout, and equipment setup to create a space that reflects the SCENT brand.",
+    description: "Our experts will help you choose the ideal location for your Salon Franchise in Bangalore, ensuring maximum visibility and foot traffic. We will also assist with the interior design, layout, and equipment setup to create a space that reflects the SCENT brand.",
   },
   {
     number: "4",
     title: "Training and Staffing",
-    description: "comprehensive training will be provided for you and your staff, covering all aspects of salon management, customer service, and beauty treatments.",
+    description: "Comprehensive training will be provided for you and your staff, covering all aspects of salon management, customer service, and beauty treatments.",
   },
   {
     number: "5",
     title: "Grand Opening",
-    description: "we will support you with a grand opening event to create buzz and attract your first clients. From there, you will have ongoing support from our marketing, operations, and training teams.",
+    description: "We will support you with a grand opening event to create buzz and attract your first clients. From there, you will have ongoing support from our marketing, operations, and training teams.",
   },
 ];
 
@@ -63,6 +63,41 @@ export default function FranchiseSection() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState("");
+  const [advantagesIndex, setAdvantagesIndex] = useState(0);
+  const [stepsIndex, setStepsIndex] = useState(0);
+
+  const itemsPerView = {
+    advantages: { mobile: 1, tablet: 2, desktop: 3 },
+    steps: { mobile: 1, tablet: 1, desktop: 2 },
+  };
+
+  const handleAdvantagesPrev = () => {
+    setAdvantagesIndex((prev) => {
+      const maxIndex = Math.max(0, advantages.length - itemsPerView.advantages.desktop);
+      return prev === 0 ? maxIndex : prev - 1;
+    });
+  };
+
+  const handleAdvantagesNext = () => {
+    setAdvantagesIndex((prev) => {
+      const maxIndex = Math.max(0, advantages.length - itemsPerView.advantages.desktop);
+      return prev >= maxIndex ? 0 : prev + 1;
+    });
+  };
+
+  const handleStepsPrev = () => {
+    setStepsIndex((prev) => {
+      const maxIndex = Math.max(0, steps.length - itemsPerView.steps.desktop);
+      return prev === 0 ? maxIndex : prev - 1;
+    });
+  };
+
+  const handleStepsNext = () => {
+    setStepsIndex((prev) => {
+      const maxIndex = Math.max(0, steps.length - itemsPerView.steps.desktop);
+      return prev >= maxIndex ? 0 : prev + 1;
+    });
+  };
 
   const handleChange = (e) => {
     setFormData({
@@ -96,6 +131,15 @@ export default function FranchiseSection() {
           playsInline
           className="h-[60vh] min-h-[500px] sm:min-h-[600px] w-full object-cover"
         />
+        {/* Hero Tagline Overlay */}
+        <div className="absolute inset-0 flex items-center justify-center z-10 bg-black/20">
+          <h1 
+            className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-[0.1em] text-center px-4"
+            style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}
+          >
+            UNLOCK THE OPPORTUNITY
+          </h1>
+        </div>
       </div>
 
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 md:px-12 lg:px-20 py-12 sm:py-16 md:py-20">
@@ -109,7 +153,7 @@ export default function FranchiseSection() {
         {/* Why Choose Section */}
         <div className="mb-12 sm:mb-16">
           <div className="text-center mb-8 sm:mb-12">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-[#1f1f2e] mb-4" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-[#1f1f2e] mb-4" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
               Why Choose a Salon Franchise in Bangalore?
             </h2>
             <div className="flex items-center justify-center gap-3 sm:gap-4 mb-6">
@@ -126,7 +170,7 @@ export default function FranchiseSection() {
         {/* Contact Form Section */}
         <div className="mb-12 sm:mb-16 grid gap-8 md:grid-cols-2">
           <div className="order-2 md:order-1">
-            <h3 className="text-2xl sm:text-3xl font-semibold text-[#1f1f2e] mb-6" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
+            <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-[#1f1f2e] mb-6" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
               Get in Touch
             </h3>
             <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
@@ -203,7 +247,7 @@ export default function FranchiseSection() {
           </div>
 
           <div className="order-1 md:order-2 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-200 p-6 sm:p-8 shadow-lg">
-            <h3 className="text-2xl sm:text-3xl font-semibold text-[#1f1f2e] mb-6" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
+            <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-[#1f1f2e] mb-6" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
               Contact Information
             </h3>
             <div className="space-y-6">
@@ -240,7 +284,7 @@ export default function FranchiseSection() {
         {/* SCENT Advantage Section */}
         <div className="mb-12 sm:mb-16">
           <div className="text-center mb-8 sm:mb-12">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-[#1f1f2e] mb-4" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-[#1f1f2e] mb-4" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
               The SCENT Advantage for Your Salon Franchise in Bangalore
             </h2>
             <div className="flex items-center justify-center gap-3 sm:gap-4 mb-6">
@@ -253,37 +297,62 @@ export default function FranchiseSection() {
             </p>
           </div>
 
-          <div className="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {advantages.map((advantage, index) => (
-              <div
-                key={index}
-                className="group relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-6 sm:p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+          <div className="relative">
+            <div className="overflow-hidden">
+              <div 
+                className="flex gap-6 sm:gap-8 transition-transform duration-500 ease-in-out"
+                style={{ transform: `translateX(-${advantagesIndex * (100 / itemsPerView.advantages.desktop)}%)` }}
               >
-                <div className="absolute top-0 right-0 h-24 w-24 bg-black/5 rounded-full -mr-12 -mt-12 transition-all duration-500 group-hover:scale-150" />
-                <div className="relative">
-                  <div className="mb-4 flex items-start gap-4">
-                    <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-black text-white">
-                      <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
+                {advantages.map((advantage, index) => (
+                  <div
+                    key={index}
+                    className="group relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-6 sm:p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl flex-shrink-0 w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]"
+                  >
+                    <div className="absolute top-0 right-0 h-24 w-24 bg-black/5 rounded-full -mr-12 -mt-12 transition-all duration-500 group-hover:scale-150" />
+                    <div className="relative">
+                      <div className="mb-4 flex items-start gap-4">
+                        <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-black text-white">
+                          <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                          </svg>
+                        </div>
+                        <h3 className="text-base sm:text-lg md:text-xl font-semibold text-[#1f1f2e]" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
+                          {advantage.title}
+                        </h3>
+                      </div>
+                      <p className="text-sm sm:text-base leading-relaxed text-[#555]">
+                        {advantage.description}
+                      </p>
                     </div>
-                    <h3 className="text-xl sm:text-2xl font-semibold text-[#1f1f2e]" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
-                      {advantage.title}
-                    </h3>
                   </div>
-                  <p className="text-sm sm:text-base leading-relaxed text-[#555]">
-                    {advantage.description}
-                  </p>
-                </div>
+                ))}
               </div>
-            ))}
+            </div>
+            <div className="mt-6 flex items-center justify-center gap-4">
+              <button
+                type="button"
+                onClick={handleAdvantagesPrev}
+                aria-label="Previous advantage"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 bg-white text-xl font-light text-black transition-all hover:border-black hover:bg-gray-50"
+              >
+                ‹
+              </button>
+              <button
+                type="button"
+                onClick={handleAdvantagesNext}
+                aria-label="Next advantage"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 bg-white text-xl font-light text-black transition-all hover:border-black hover:bg-gray-50"
+              >
+                ›
+              </button>
+            </div>
           </div>
         </div>
 
         {/* Steps Section */}
         <div className="mb-12 sm:mb-16">
           <div className="text-center mb-8 sm:mb-12">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-[#1f1f2e] mb-4" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-[#1f1f2e] mb-4" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
               Steps to Open Your Salon Franchise in Bangalore with SCENT
             </h2>
             <div className="flex items-center justify-center gap-3 sm:gap-4 mb-6">
@@ -296,32 +365,57 @@ export default function FranchiseSection() {
             </p>
           </div>
 
-          <div className="space-y-6 sm:space-y-8">
-            {steps.map((step, index) => (
-              <div
-                key={index}
-                className="flex gap-6 sm:gap-8 rounded-2xl border border-gray-200 bg-white p-6 sm:p-8 shadow-sm transition-all duration-300 hover:shadow-lg"
+          <div className="relative">
+            <div className="overflow-hidden">
+              <div 
+                className="flex gap-6 sm:gap-8 transition-transform duration-500 ease-in-out"
+                style={{ transform: `translateX(-${stepsIndex * (100 / itemsPerView.steps.desktop)}%)` }}
               >
-                <div className="flex h-16 w-16 sm:h-20 sm:w-20 flex-shrink-0 items-center justify-center rounded-full bg-black text-2xl sm:text-3xl font-bold text-white">
-                  {step.number}
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl sm:text-2xl font-semibold text-[#1f1f2e] mb-3" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
-                    {step.title}
-                  </h3>
-                  <p className="text-sm sm:text-base leading-relaxed text-[#555]">
-                    {step.description}
-                  </p>
-                </div>
+                {steps.map((step, index) => (
+                  <div
+                    key={index}
+                    className="flex gap-6 sm:gap-8 rounded-2xl border border-gray-200 bg-white p-6 sm:p-8 shadow-sm transition-all duration-300 hover:shadow-lg flex-shrink-0 w-full lg:w-[calc(50%-0.75rem)]"
+                  >
+                    <div className="flex h-16 w-16 sm:h-20 sm:w-20 flex-shrink-0 items-center justify-center rounded-full bg-black text-2xl sm:text-3xl font-bold text-white">
+                      {step.number}
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-base sm:text-lg md:text-xl font-semibold text-[#1f1f2e] mb-3" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
+                        {step.title}
+                      </h3>
+                      <p className="text-sm sm:text-base leading-relaxed text-[#555]">
+                        {step.description}
+                      </p>
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
+            <div className="mt-6 flex items-center justify-center gap-4">
+              <button
+                type="button"
+                onClick={handleStepsPrev}
+                aria-label="Previous step"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 bg-white text-xl font-light text-black transition-all hover:border-black hover:bg-gray-50"
+              >
+                ‹
+              </button>
+              <button
+                type="button"
+                onClick={handleStepsNext}
+                aria-label="Next step"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 bg-white text-xl font-light text-black transition-all hover:border-black hover:bg-gray-50"
+              >
+                ›
+              </button>
+            </div>
           </div>
         </div>
 
         {/* Success Stories Section */}
         <div className="mb-12 sm:mb-16 rounded-3xl bg-gradient-to-br from-black via-[#1a1a1a] to-black p-8 sm:p-12 md:p-16 text-white">
           <div className="text-center mb-8">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold mb-4" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-4" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
               Success Stories from Our Salon Franchise in Bangalore
             </h2>
             <div className="flex items-center justify-center gap-3 sm:gap-4 mb-6">
@@ -338,7 +432,7 @@ export default function FranchiseSection() {
         {/* What Makes SCENT Best Section */}
         <div className="mb-12 sm:mb-16">
           <div className="text-center mb-8 sm:mb-12">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-[#1f1f2e] mb-4" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-[#1f1f2e] mb-4" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
               What Makes SCENT the Best Choice for Your Salon Franchise in Bangalore?
             </h2>
             <div className="flex items-center justify-center gap-3 sm:gap-4 mb-6">
@@ -359,7 +453,7 @@ export default function FranchiseSection() {
 
         {/* Profitable Opportunity Section */}
         <div className="mb-12 sm:mb-16 rounded-2xl border-l-4 border-black bg-gradient-to-r from-gray-50 to-white p-6 sm:p-8 md:p-10">
-          <h3 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-[#1f1f2e] mb-4" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
+          <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-[#1f1f2e] mb-4" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
             A Profitable Business Opportunity Awaits
           </h3>
           <p className="text-base sm:text-lg leading-relaxed text-[#555]">
@@ -374,7 +468,7 @@ export default function FranchiseSection() {
             <div className="absolute bottom-0 right-0 h-64 w-64 rounded-full bg-white blur-3xl" />
           </div>
           <div className="relative z-10">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
               How to Get Started
             </h2>
             <p className="text-base sm:text-lg md:text-xl leading-relaxed text-white/90 max-w-3xl mx-auto mb-8">

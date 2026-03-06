@@ -3,6 +3,16 @@
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import WhyScent from "../why/why";
+import VideoCarousel from "../VideoCarousel/VideoCarousel";
+
+// Placeholder videos - will be replaced with actual skin care videos
+const skinCareVideos = [
+  { id: "9eXt8kx4NXI", title: "Skin Care Video 1" },
+  { id: "y3ZZRdMHEr8", title: "Skin Care Video 2" },
+  { id: "dNnGRTo6P6E", title: "Skin Care Video 3" },
+  { id: "SpS2Pkme0A8", title: "Skin Care Video 4" },
+  { id: "FTCoQQGPcNo", title: "Skin Care Video 5" },
+];
 
 const serviceCategories = [
   {
@@ -180,9 +190,10 @@ export default function NewServicesShowcase() {
                       <Image
                         src={service.image}
                         alt={service.title}
-                        width={900}
-                        height={600}
-                        className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        className="object-cover transition-transform duration-700 group-hover:scale-110"
+                        priority={idx < 3}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
                       
@@ -254,13 +265,13 @@ export default function NewServicesShowcase() {
               
               <div className="relative z-10 grid gap-8 p-8 md:grid-cols-[1.2fr_0.8fr] md:p-12 lg:p-16">
                 {/* Image Section */}
-                <div className="relative overflow-hidden rounded-[32px] border-2 border-gray-100 shadow-xl">
+                <div className="relative overflow-hidden rounded-[32px] border-2 border-gray-100 shadow-xl min-h-[400px]">
                   <Image
                     src={activeService.image}
                     alt={activeService.title}
-                    width={1200}
-                    height={900}
-                    className="h-full min-h-[400px] w-full object-cover"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 60vw"
+                    className="object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
                   <div className="absolute bottom-8 left-8 right-8">
@@ -336,6 +347,11 @@ export default function NewServicesShowcase() {
             </div>
           )}
         </div>
+      </div>
+
+      {/* Video Gallery Section */}
+      <div className="px-4 sm:px-6 md:px-12 lg:px-20 py-12">
+        <VideoCarousel videos={skinCareVideos} title="Skin Care Transformation Gallery" />
       </div>
 
       <WhyScent />

@@ -73,9 +73,9 @@ export default function TrustedBy() {
                 <Image
                   src={brand.logo}
                   alt={brand.name}
-                  width={200}
-                  height={100}
-                  className="h-12 sm:h-16 md:h-20 w-auto object-contain"
+                  width={120}
+                  height={60}
+                  className="h-8 sm:h-10 md:h-12 w-auto object-contain"
                 />
               </div>
             ))}

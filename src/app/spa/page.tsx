@@ -1,6 +1,11 @@
+import dynamic from "next/dynamic";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Last/last";
-import SpaSection from "@/components/spa/spa";
+
+const SpaSection = dynamic(() => import("@/components/spa/spa"), {
+  loading: () => <div className="flex items-center justify-center min-h-[400px]"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900"></div></div>,
+  ssr: true,
+});
 
 export default function SpaPage() {
   return (

@@ -2,9 +2,11 @@
 
 import Image from "next/image";
 import { useRef, useState } from "react";
-import WhyScent from "../why/why";
-import VideoCarousel from "../VideoCarousel/VideoCarousel";
-import FindNearest from "../Findyour/find";
+import dynamic from "next/dynamic";
+
+const WhyScent = dynamic(() => import("../why/why"), { ssr: true });
+const VideoCarousel = dynamic(() => import("../VideoCarousel/VideoCarousel"), { ssr: true });
+const FindNearest = dynamic(() => import("../Findyour/find"), { ssr: true });
 
 const nailVideos = [
   { id: "y3ZZRdMHEr8", title: "Nail Video 1" },

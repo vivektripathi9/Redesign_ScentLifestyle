@@ -11,43 +11,14 @@ const brands = [
   { name: "KÉRASTASE", logo: "/cass.png" },
 ];
 
-const brandsToShow = 5;
-
 export default function TrustedBy() {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
-  const handlePrev = () => {
-    setCurrentIndex((prev) => {
-      if (prev === 0) {
-        return brands.length - 1;
-      }
-      return prev - 1;
-    });
-  };
-
-  const handleNext = () => {
-    setCurrentIndex((prev) => {
-      if (prev >= brands.length - 1) {
-        return 0;
-      }
-      return prev + 1;
-    });
-  };
-
-  // Create a circular array to show brands
-  const getVisibleBrands = () => {
-    const result = [];
-    for (let i = 0; i < brandsToShow; i++) {
-      const index = (currentIndex + i) % brands.length;
-      result.push(brands[index]);
-    }
-    return result;
-  };
-
-  const visibleBrands = getVisibleBrands();
+  // Duplicate brands for seamless infinite scroll (3 sets for smooth looping)
+  const duplicatedBrands = [...brands, ...brands, ...brands];
 
   return (
-    <section className="bg-white py-8 sm:py-12">
+    <section className="bg-white py-12 sm:py-16 md:py-20">
       <div className="flex w-full flex-col items-center gap-6 sm:gap-8 px-4 sm:px-6 md:px-12 lg:px-20">
         <h2 className="text-2xl sm:text-3xl md:text-[42px] font-light leading-tight text-[#1f1f2e] tracking-[0.1em]" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300, textTransform: 'none' }}>Trusted by the best</h2>
         <div className="decorative-flower-divider flex items-center justify-center gap-3 sm:gap-4 text-center text-gray-300">
@@ -55,40 +26,44 @@ export default function TrustedBy() {
           <span className="text-pink-400 text-lg sm:text-xl">❀</span>
           <span className="h-px w-10 sm:w-12 bg-black" />
         </div>
-        <div className="relative mt-2 sm:mt-4 flex w-full items-center justify-center overflow-hidden">
-          <button
-            type="button"
-            onClick={handlePrev}
-            aria-label="Previous brand"
-            className="flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center text-xl sm:text-2xl font-light text-black transition-opacity hover:opacity-70 -mr-2 sm:-mr-4 z-10 bg-white/80 sm:bg-transparent"
-          >
-            ‹
-          </button>
-          <div className="flex items-center justify-center gap-1 sm:gap-2 overflow-x-auto scrollbar-hide">
-            {visibleBrands.map((brand, index) => (
+        <div 
+          className="relative mt-2 sm:mt-4 w-full overflow-hidden"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
+          <div className="flex items-center gap-0 sm:gap-0.5 animate-scroll" style={{ animationPlayState: isPaused ? 'paused' : 'running' }}>
+            {duplicatedBrands.map((brand, index) => (
               <div
-                key={`${brand.name}-${currentIndex}-${index}`}
-                className="flex items-center justify-center px-1 sm:px-2 flex-shrink-0"
+                key={`${brand.name}-${index}`}
+                className="flex items-center justify-center px-0 sm:px-0.5 flex-shrink-0"
               >
                 <Image
                   src={brand.logo}
                   alt={brand.name}
-                  width={120}
-                  height={60}
-                  className="h-8 sm:h-10 md:h-12 w-auto object-contain"
+                  width={80}
+                  height={40}
+                  className="h-5 sm:h-6 md:h-7 w-auto object-contain"
                 />
               </div>
             ))}
           </div>
-          <button
-            type="button"
-            onClick={handleNext}
-            aria-label="Next brand"
-            className="flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center text-xl sm:text-2xl font-light text-black transition-opacity hover:opacity-70 -ml-2 sm:-ml-4 z-10 bg-white/80 sm:bg-transparent"
-          >
-            ›
-          </button>
         </div>
+        
+        <style jsx>{`
+          @keyframes scroll {
+            0% {
+              transform: translateX(0);
+            }
+            100% {
+              transform: translateX(calc(-100% / 3));
+            }
+          }
+          .animate-scroll {
+            animation: scroll 12s linear infinite;
+            width: fit-content;
+            display: flex;
+          }
+        `}</style>
       </div>
     </section>
   );

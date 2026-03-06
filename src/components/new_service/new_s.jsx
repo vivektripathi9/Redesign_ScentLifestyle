@@ -2,8 +2,10 @@
 
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
-import WhyScent from "../why/why";
-import VideoCarousel from "../VideoCarousel/VideoCarousel";
+import dynamic from "next/dynamic";
+
+const WhyScent = dynamic(() => import("../why/why"), { ssr: true });
+const VideoCarousel = dynamic(() => import("../VideoCarousel/VideoCarousel"), { ssr: true });
 
 // Placeholder videos - will be replaced with actual skin care videos
 const skinCareVideos = [
@@ -121,6 +123,7 @@ export default function NewServicesShowcase() {
           loop
           muted
           playsInline
+          preload="metadata"
         />
       </div>
 

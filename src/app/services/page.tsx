@@ -1,6 +1,11 @@
+import dynamic from "next/dynamic";
 import Navbar from "@/components/Navbar";
-import ServicesSection from "@/components/Services/ser";
 import Footer from "@/components/Last/last";
+
+const ServicesSection = dynamic(() => import("@/components/Services/ser"), {
+  loading: () => <div className="flex items-center justify-center min-h-[400px]"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900"></div></div>,
+  ssr: true,
+});
 
 export default function ServicesPage() {
   return (

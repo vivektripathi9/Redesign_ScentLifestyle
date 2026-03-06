@@ -274,6 +274,7 @@ export default function ServicesSection() {
           muted
           loop
           playsInline
+          preload="metadata"
           className="h-[60vh] min-h-[480px] w-full object-cover"
         />
       </div>

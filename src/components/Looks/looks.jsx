@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import RedefineHeading from "@/components/Redefine/redefine";
 
 const openBookAppointment = (serviceName) => {
@@ -13,28 +14,20 @@ const openBookAppointment = (serviceName) => {
 
 const services = [
   {
-    title: "Facial Care",
-    description:
-      "I was impressed by the molding services, not lorem ipsum is simply free text.",
-    image: "/l1.png",
-    icon: "/m1.png",
-    href: "/new-service", // Beauty Treatments page
-  },
-  {
-    title: "Massages",
-    description:
-      "I was impressed by the molding services, not lorem ipsum is simply free text.",
-    image: "/l2.png",
-    icon: "/m2.png",
-    href: "/spa", // Spa page
-  },
-  {
     title: "Hair Care",
     description:
       "I was impressed by the molding services, not lorem ipsum is simply free text.",
     image: "/l3.png",
     icon: "/m3.png",
-    href: "/services", // Services page
+    href: "/services", // Hair services page
+  },
+  {
+    title: "Skin Care",
+    description:
+      "I was impressed by the molding services, not lorem ipsum is simply free text.",
+    image: "/l1.png",
+    icon: "/m1.png",
+    href: "/new-service", // Skincare / facials page
   },
   {
     title: "Nail Care",
@@ -44,16 +37,56 @@ const services = [
     icon: "/m4.png",
     href: "/nails", // Nails page
   },
+  {
+    title: "Beauty",
+    description:
+      "I was impressed by the molding services, not lorem ipsum is simply free text.",
+    image: "/l2.png",
+    icon: "/m2.png",
+    href: "/new-service", // Beauty treatments page
+  },
+  {
+    title: "Spa",
+    description:
+      "I was impressed by the molding services, not lorem ipsum is simply free text.",
+    image: "/l1.png",
+    icon: "/m1.png",
+    href: "/spa", // Spa page
+  },
+  {
+    title: "Massages",
+    description:
+      "I was impressed by the molding services, not lorem ipsum is simply free text.",
+    image: "/l2.png",
+    icon: "/m2.png",
+    href: "/spa", // Massages within spa page
+  },
 ];
 
 export default function LooksSection() {
+  const ITEMS_PER_VIEW = 4;
+  const [startIndex, setStartIndex] = useState(0);
+
+  const visibleServices = Array.from({ length: ITEMS_PER_VIEW }, (_, i) => {
+    const index = (startIndex + i) % services.length;
+    return services[index];
+  });
+
+  const handlePrev = () => {
+    setStartIndex((prev) => (prev - ITEMS_PER_VIEW + services.length) % services.length);
+  };
+
+  const handleNext = () => {
+    setStartIndex((prev) => (prev + ITEMS_PER_VIEW) % services.length);
+  };
+
   return (
     <section className="bg-white py-8 sm:py-12">
       <div className="flex w-full flex-col items-center gap-8 sm:gap-12 px-4 sm:px-6 md:px-12 lg:px-20 text-center">
         <RedefineHeading />
 
         <div className="grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-4 w-full">
-          {services.map((service) => (
+          {visibleServices.map((service) => (
             <Link
               key={service.title}
               href={service.href}
@@ -97,6 +130,25 @@ export default function LooksSection() {
               </button>
             </Link>
           ))}
+        </div>
+
+        <div className="mt-2 sm:mt-3 flex items-center justify-center gap-3">
+          <button
+            type="button"
+            onClick={handlePrev}
+            className="h-9 w-9 sm:h-10 sm:w-10 rounded-full border border-gray-300 bg-white text-gray-700 text-sm flex items-center justify-center hover:bg-gray-100 transition-colors"
+            aria-label="Previous services"
+          >
+            ‹
+          </button>
+          <button
+            type="button"
+            onClick={handleNext}
+            className="h-9 w-9 sm:h-10 sm:w-10 rounded-full border border-gray-300 bg-white text-gray-700 text-sm flex items-center justify-center hover:bg-gray-100 transition-colors"
+            aria-label="Next services"
+          >
+            ›
+          </button>
         </div>
 
         <div className="flex flex-col items-center gap-3 sm:gap-4 text-center">

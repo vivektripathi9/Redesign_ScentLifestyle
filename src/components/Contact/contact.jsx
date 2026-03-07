@@ -1,64 +1,56 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 
-const contactInfo = [
+const advantages = [
   {
-    icon: (
-      <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-      </svg>
-    ),
-    title: "Phone",
-    content: "1-800-915-6270",
-    link: "tel:18009156270",
+    title: "Brand Recognition",
+    description: "SCENT is already a well-known name in the beauty industry, recognized for its exceptional quality and customer service. Your salon franchise in Bangalore will benefit from this established reputation, attracting clients from day one.",
   },
   {
-    icon: (
-      <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-      </svg>
-    ),
-    title: "Email",
-    content: "info@scentlifestyle.com",
-    link: "mailto:info@scentlifestyle.com",
+    title: "Comprehensive Training",
+    description: "We provide extensive training programs for you and your staff, ensuring that your Salon Franchise in Bangalore operates smoothly and meets our high standards. From hair styling and skincare techniques to customer service and management, we cover it all.",
   },
   {
-    icon: (
-      <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-      </svg>
-    ),
-    title: "Location",
-    content: "Lavelle Road, Bengaluru",
-    link: "https://www.google.com/maps/search/?api=1&query=Scent+Salon+Lavelle+Road+Bengaluru",
+    title: "Marketing and Promotional Support",
+    description: "Our marketing team will help you create buzz around your new Salon Franchise in Bangalore through strategic campaigns, social media promotions, and local events. This ensures a steady stream of customers eager to experience SCENT's renowned services.",
   },
   {
-    icon: (
-      <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-      </svg>
-    ),
-    title: "Hours",
-    content: "Mon-Sat: 9:00 AM - 6:00 PM",
-    link: "#",
+    title: "Proven Business Model",
+    description: "With years of experience in the industry, we have developed a successful business model that reduces risk and increases profitability. When you choose a Salon Franchise in Bangalore with SCENT, you're leveraging a proven formula that works.",
+  },
+  {
+    title: "Exclusive Access to Premium Products",
+    description: "SCENT franchises have access to exclusive, high-quality beauty products that are not available to other salons. This unique offering sets your Salon Franchise in Bangalore apart, ensuring customer loyalty and repeat business.",
   },
 ];
 
-const openingHours = [
-  { day: "Monday - Tuesday", time: "9:00 AM - 6:00 PM" },
-  { day: "Wednesday - Friday", time: "8:00 AM - 5:00 PM" },
-  { day: "Saturday", time: "9:00 AM - 3:00 PM" },
-  { day: "Sunday", time: "Closed" },
-];
-
-const socialLinks = [
-  { name: "Facebook", icon: "/x1.png", href: "https://www.facebook.com/ScentSalonSpas/" },
-  { name: "X (Twitter)", icon: "/x2.png", href: "https://x.com/scentlifestyle" },
-  { name: "Instagram", icon: "/x3.png", href: "https://www.instagram.com/scentlifestyle/" },
-  { name: "Pinterest", icon: "/x4.png", href: "https://in.pinterest.com/scentlifestyle/" },
+const steps = [
+  {
+    number: "1",
+    title: "Initial Consultation",
+    description: "Our team will discuss your goals, budget, and location preferences to determine the best strategy for your salon franchise.",
+  },
+  {
+    number: "2",
+    title: "Franchise Agreement",
+    description: "Once the terms are agreed upon, we will sign a franchise agreement that outlines your responsibilities, the support you will receive, and other key details.",
+  },
+  {
+    number: "3",
+    title: "Site Selection and Setup",
+    description: "Our experts will help you choose the ideal location for your Salon Franchise in Bangalore, ensuring maximum visibility and foot traffic. We will also assist with the interior design, layout, and equipment setup to create a space that reflects the SCENT brand.",
+  },
+  {
+    number: "4",
+    title: "Training and Staffing",
+    description: "Comprehensive training will be provided for you and your staff, covering all aspects of salon management, customer service, and beauty treatments.",
+  },
+  {
+    number: "5",
+    title: "Grand Opening",
+    description: "We will support you with a grand opening event to create buzz and attract your first clients. From there, you will have ongoing support from our marketing, operations, and training teams.",
+  },
 ];
 
 export default function ContactSection() {
@@ -66,12 +58,45 @@ export default function ContactSection() {
     name: "",
     email: "",
     phone: "",
-    subject: "",
-    message: "",
+    details: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState("");
-  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [advantagesIndex, setAdvantagesIndex] = useState(0);
+  const [stepsIndex, setStepsIndex] = useState(0);
+
+  const itemsPerView = {
+    advantages: { mobile: 1, tablet: 2, desktop: 3 },
+    steps: { mobile: 1, tablet: 1, desktop: 2 },
+  };
+
+  const handleAdvantagesPrev = () => {
+    setAdvantagesIndex((prev) => {
+      const maxIndex = Math.max(0, advantages.length - itemsPerView.advantages.desktop);
+      return prev === 0 ? maxIndex : prev - 1;
+    });
+  };
+
+  const handleAdvantagesNext = () => {
+    setAdvantagesIndex((prev) => {
+      const maxIndex = Math.max(0, advantages.length - itemsPerView.advantages.desktop);
+      return prev >= maxIndex ? 0 : prev + 1;
+    });
+  };
+
+  const handleStepsPrev = () => {
+    setStepsIndex((prev) => {
+      const maxIndex = Math.max(0, steps.length - itemsPerView.steps.desktop);
+      return prev === 0 ? maxIndex : prev - 1;
+    });
+  };
+
+  const handleStepsNext = () => {
+    setStepsIndex((prev) => {
+      const maxIndex = Math.max(0, steps.length - itemsPerView.steps.desktop);
+      return prev >= maxIndex ? 0 : prev + 1;
+    });
+  };
 
   const handleChange = (e) => {
     setFormData({
@@ -89,37 +114,49 @@ export default function ContactSection() {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          subject: "Franchise Inquiry",
+          message: formData.details,
+        }),
       });
 
       const data = await res.json();
 
       if (data.success) {
-        setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
-        setShowSuccessModal(true);
-        // Redirect to home page after 4 seconds
-        setTimeout(() => {
-          window.location.href = "/";
-        }, 4000);
+        setFormData({ name: "", email: "", phone: "", details: "" });
+        setSubmitMessage("Thank you! We'll contact you soon.");
+        setTimeout(() => setSubmitMessage(""), 5000);
       } else {
         setSubmitMessage(`Error: ${data.error || "Failed to send message. Please try again."}`);
-        setIsSubmitting(false);
         setTimeout(() => setSubmitMessage(""), 8000);
       }
     } catch (error) {
       console.error("Form submission error:", error);
       setSubmitMessage("Something went wrong. Please try again later or contact us directly.");
-      setIsSubmitting(false);
       setTimeout(() => setSubmitMessage(""), 8000);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   return (
-    <section className="bg-[#fafafa] text-[#1f1f2e]">
-      {/* Hero Section - Simplified */}
+    <section className="bg-[#f7f7f7] text-[#1f1f2e]">
+      {/* Hero Section */}
       <div className="relative w-full bg-gradient-to-br from-black via-[#1a1a1a] to-black py-16 sm:py-20 md:py-24">
-        <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 md:px-12 lg:px-20 text-center text-white">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light tracking-wide mb-4" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-0 left-0 h-64 w-64 rounded-full bg-white/10 blur-3xl" />
+          <div className="absolute bottom-0 right-0 h-64 w-64 rounded-full bg-white/10 blur-3xl" />
+        </div>
+        <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 md:px-12 lg:px-20 text-center text-white">
+          <div className="mb-4 flex items-center justify-center gap-3">
+            <span className="h-px w-12 sm:w-20 bg-white/30" />
+            <span className="text-pink-400 text-xl sm:text-2xl">❀</span>
+            <span className="h-px w-12 sm:w-20 bg-white/30" />
+          </div>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light tracking-[0.1em] mb-4" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
             Get in Touch
           </h1>
           <p className="max-w-2xl mx-auto text-base sm:text-lg md:text-xl leading-relaxed text-white/80">
@@ -128,48 +165,28 @@ export default function ContactSection() {
         </div>
       </div>
 
-      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 md:px-12 lg:px-20 -mt-4 sm:-mt-8 md:-mt-12 lg:-mt-16">
-        {/* Contact Info Cards - Compact Horizontal Layout */}
-        <div className="grid gap-3 sm:gap-4 md:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mb-8 sm:mb-12 md:mb-16">
-          {contactInfo.map((info, index) => (
-            <a
-              key={index}
-              href={info.link}
-              target={info.link.startsWith('http') ? '_blank' : undefined}
-              rel={info.link.startsWith('http') ? 'noopener noreferrer' : undefined}
-              className="group bg-white rounded-xl border border-gray-200 p-4 sm:p-6 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1"
-            >
-              <div className="flex items-start gap-3 sm:gap-4">
-                <div className="flex-shrink-0 flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-lg bg-black text-white transition-all duration-300 group-hover:bg-red-600 group-hover:scale-110">
-                  {info.icon}
-                </div>
-                <div className="flex-1 min-w-0">
-                  <h3 className="text-xs sm:text-sm font-semibold text-[#1f1f2e] mb-1" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
-                    {info.title}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-[#555] leading-tight break-words">{info.content}</p>
-                </div>
-              </div>
-            </a>
-          ))}
-        </div>
-
-        {/* Main Content - Two Column Layout */}
-        <div className="grid gap-6 sm:gap-8 lg:grid-cols-2 mb-8 sm:mb-12 md:mb-16">
+      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 md:px-12 lg:px-20 -mt-4 sm:-mt-8 md:-mt-12 lg:-mt-16 py-12 sm:py-16 md:py-20">
+        {/* GET IN TOUCH Section - Form Left, Contact Info Right */}
+        <div className="mb-12 sm:mb-16 grid gap-8 md:grid-cols-2">
           {/* Contact Form - Left Column */}
-          <div className="bg-white rounded-2xl border border-gray-200 p-6 sm:p-8 md:p-10 shadow-sm">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-[#1f1f2e] mb-2" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
-              Send Us a Message
-            </h2>
-            <p className="text-sm sm:text-base text-[#555] mb-6 sm:mb-8">
+          <div className="order-2 md:order-1 bg-white rounded-2xl border border-gray-200 p-6 sm:p-8 md:p-10 shadow-[0_25px_70px_rgba(0,0,0,0.05)] hover:shadow-[0_35px_90px_rgba(0,0,0,0.12)] transition-all duration-500">
+            <div className="mb-6">
+              <h3 className="text-2xl sm:text-3xl md:text-4xl font-light text-[#1f1f2e] mb-2 tracking-[0.05em]" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300, textTransform: 'none' }}>
+                Get in Touch
+                  </h3>
+              <div className="flex items-center gap-3 mb-4">
+                <span className="h-px w-12 bg-[#1f1f2e]" />
+                <span className="text-pink-400 text-lg">❀</span>
+                <span className="h-px w-12 bg-[#1f1f2e]" />
+              </div>
+              <p className="text-sm sm:text-base text-[#555]">
               Fill out the form below and we'll get back to you as soon as possible.
             </p>
-
-            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
-              <div className="grid gap-4 sm:gap-5 sm:grid-cols-2">
+            </div>
+            <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
                 <div>
-                  <label htmlFor="name" className="block text-xs sm:text-sm font-medium text-[#1f1f2e] mb-2">
-                    Name *
+                <label htmlFor="name" className="block text-xs sm:text-sm font-light text-[#1f1f2e] mb-2 tracking-[0.1em]" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300, textTransform: 'none' }}>
+                  Name
                   </label>
                   <input
                     type="text"
@@ -178,13 +195,14 @@ export default function ContactSection() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-sm sm:text-base text-[#1f1f2e] focus:border-red-600 focus:outline-none focus:ring-2 focus:ring-red-600/20 transition-colors"
+                  className="w-full rounded-lg border border-gray-200 bg-white px-4 py-3.5 text-sm sm:text-base text-[#1f1f2e] focus:border-[#1f1f2e] focus:outline-none focus:ring-2 focus:ring-[#1f1f2e]/10 transition-all duration-300 shadow-sm hover:shadow-md"
+                  style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}
                     placeholder="Your full name"
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-xs sm:text-sm font-medium text-[#1f1f2e] mb-2">
-                    Email *
+                <label htmlFor="email" className="block text-xs sm:text-sm font-light text-[#1f1f2e] mb-2 tracking-[0.1em]" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300, textTransform: 'none' }}>
+                  Email
                   </label>
                   <input
                     type="email"
@@ -193,15 +211,13 @@ export default function ContactSection() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-sm sm:text-base text-[#1f1f2e] focus:border-red-600 focus:outline-none focus:ring-2 focus:ring-red-600/20 transition-colors"
+                  className="w-full rounded-lg border border-gray-200 bg-white px-4 py-3.5 text-sm sm:text-base text-[#1f1f2e] focus:border-[#1f1f2e] focus:outline-none focus:ring-2 focus:ring-[#1f1f2e]/10 transition-all duration-300 shadow-sm hover:shadow-md"
+                  style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}
                     placeholder="your.email@example.com"
                   />
-                </div>
               </div>
-
-              <div className="grid gap-4 sm:gap-5 sm:grid-cols-2">
                 <div>
-                  <label htmlFor="phone" className="block text-xs sm:text-sm font-medium text-[#1f1f2e] mb-2">
+                <label htmlFor="phone" className="block text-xs sm:text-sm font-light text-[#1f1f2e] mb-2 tracking-[0.1em]" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300, textTransform: 'none' }}>
                     Phone
                   </label>
                   <input
@@ -210,126 +226,251 @@ export default function ContactSection() {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-sm sm:text-base text-[#1f1f2e] focus:border-red-600 focus:outline-none focus:ring-2 focus:ring-red-600/20 transition-colors"
-                    placeholder="+91 9876543210"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="subject" className="block text-xs sm:text-sm font-medium text-[#1f1f2e] mb-2">
-                    Subject *
-                  </label>
-                  <input
-                    type="text"
-                    id="subject"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
                     required
-                    className="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-sm sm:text-base text-[#1f1f2e] focus:border-red-600 focus:outline-none focus:ring-2 focus:ring-red-600/20 transition-colors"
-                    placeholder="What's this about?"
+                  className="w-full rounded-lg border border-gray-200 bg-white px-4 py-3.5 text-sm sm:text-base text-[#1f1f2e] focus:border-[#1f1f2e] focus:outline-none focus:ring-2 focus:ring-[#1f1f2e]/10 transition-all duration-300 shadow-sm hover:shadow-md"
+                  style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}
+                  placeholder="+91 1234567890"
                   />
-                </div>
               </div>
-
               <div>
-                <label htmlFor="message" className="block text-xs sm:text-sm font-medium text-[#1f1f2e] mb-2">
-                  Message *
+                <label htmlFor="details" className="block text-xs sm:text-sm font-light text-[#1f1f2e] mb-2 tracking-[0.1em]" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300, textTransform: 'none' }}>
+                  Details
                 </label>
                 <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
+                  id="details"
+                  name="details"
+                  value={formData.details}
                   onChange={handleChange}
+                  rows={5}
                   required
-                  rows={6}
-                  className="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-sm sm:text-base text-[#1f1f2e] focus:border-red-600 focus:outline-none focus:ring-2 focus:ring-red-600/20 transition-colors resize-none"
-                  placeholder="Tell us how we can help you..."
+                  className="w-full rounded-lg border border-gray-200 bg-white px-4 py-3.5 text-sm sm:text-base text-[#1f1f2e] focus:border-[#1f1f2e] focus:outline-none focus:ring-2 focus:ring-[#1f1f2e]/10 transition-all duration-300 resize-none shadow-sm hover:shadow-md"
+                  style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}
+                  placeholder="Tell us about your interest in franchising..."
                 />
               </div>
-
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full rounded-lg bg-black px-6 py-3.5 text-sm sm:text-base font-semibold uppercase tracking-wide text-white transition-all hover:bg-red-600 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full rounded-lg bg-black px-6 py-3.5 text-sm sm:text-base font-light uppercase tracking-[0.15em] text-white transition-all duration-300 hover:bg-[#1a1a1a] hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
+                style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}
               >
-                {isSubmitting ? "Sending..." : "Send Message"}
+                {isSubmitting ? "Submitting..." : "Submit"}
               </button>
-
               {submitMessage && (
-                <div className="rounded-lg bg-green-50 border border-green-200 p-4">
-                  <p className="text-sm text-green-800 font-medium">{submitMessage}</p>
+                <div className={`rounded-lg p-4 ${submitMessage.includes("Error") ? "bg-red-50 border border-red-200" : "bg-green-50 border border-green-200"}`}>
+                  <p className={`text-sm font-medium ${submitMessage.includes("Error") ? "text-red-800" : "text-green-800"}`} style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
+                    {submitMessage}
+                  </p>
                 </div>
               )}
             </form>
           </div>
 
-          {/* Sidebar - Right Column */}
-          <div className="space-y-6 sm:space-y-8">
-            {/* Quick Contact */}
-            <div className="bg-gradient-to-br from-black to-[#1a1a1a] rounded-2xl border border-gray-200 p-6 sm:p-8 text-white shadow-sm">
-              <h3 className="text-xl sm:text-2xl font-semibold mb-3" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
-                Need Immediate Assistance?
+          {/* Contact Information - Right Column */}
+          <div className="order-1 md:order-2 bg-white rounded-2xl border border-gray-200 p-6 sm:p-8 shadow-[0_25px_70px_rgba(0,0,0,0.05)] hover:shadow-[0_35px_90px_rgba(0,0,0,0.12)] transition-all duration-500">
+            <div className="mb-6">
+              <h3 className="text-2xl sm:text-3xl md:text-4xl font-light text-[#1f1f2e] mb-2 tracking-[0.05em]" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300, textTransform: 'none' }}>
+                Contact Information
               </h3>
-              <p className="text-sm text-white/80 mb-6 leading-relaxed">
-                Call us directly or visit one of our locations for instant help.
-              </p>
-              <a
-                href="tel:+919742232700"
-                className="inline-flex items-center justify-center gap-2 w-full rounded-lg bg-white px-6 py-3.5 text-sm sm:text-base font-semibold text-black transition-all hover:bg-red-600 hover:text-white"
-              >
-                <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="h-px w-12 bg-[#1f1f2e]" />
+                <span className="text-pink-400 text-lg">❀</span>
+                <span className="h-px w-12 bg-[#1f1f2e]" />
+              </div>
+            </div>
+            <div className="space-y-6 mb-8">
+              <div className="group flex items-start gap-4 p-4 rounded-xl hover:bg-gray-50 transition-all duration-300">
+                <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-black text-white transition-all duration-300 group-hover:bg-[#1a1a1a] group-hover:scale-110">
+                  <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <div>
+                  <p className="text-xs font-light text-gray-500 mb-1 tracking-[0.1em]" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300, textTransform: 'uppercase' }}>
+                    Email
+                  </p>
+                  <a href="mailto:franchisee@scentlifestyle.com" className="text-base sm:text-lg font-light text-[#1f1f2e] hover:text-black transition-colors" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
+                    franchisee@scentlifestyle.com
+                  </a>
+                </div>
+              </div>
+              <div className="group flex items-start gap-4 p-4 rounded-xl hover:bg-gray-50 transition-all duration-300">
+                <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-black text-white transition-all duration-300 group-hover:bg-[#1a1a1a] group-hover:scale-110">
+                  <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
-                Call +91 9742232700
-              </a>
-            </div>
-
-            {/* Opening Hours */}
-            <div className="bg-white rounded-2xl border border-gray-200 p-6 sm:p-8 shadow-sm">
-              <h3 className="text-xl sm:text-2xl font-semibold text-[#1f1f2e] mb-6" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
-                Opening Hours
-              </h3>
-              <div className="space-y-3">
-                {openingHours.map((hour, index) => (
-                  <div key={index} className="flex items-center justify-between pb-3 border-b border-gray-100 last:border-0 last:pb-0">
-                    <span className="text-sm font-medium text-[#1f1f2e]">{hour.day}</span>
-                    <span className="text-sm text-[#555]">{hour.time}</span>
-                  </div>
-                ))}
+                </div>
+                <div>
+                  <p className="text-xs font-light text-gray-500 mb-1 tracking-[0.1em]" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300, textTransform: 'uppercase' }}>
+                    Phone
+                  </p>
+                  <a href="tel:+919591522700" className="text-base sm:text-lg font-light text-[#1f1f2e] hover:text-black transition-colors" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
+                    +91 9591522700
+                  </a>
+                </div>
               </div>
             </div>
 
-            {/* Social Media */}
-            <div className="bg-white rounded-2xl border border-gray-200 p-6 sm:p-8 shadow-sm">
-              <h3 className="text-xl sm:text-2xl font-semibold text-[#1f1f2e] mb-6" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
-                Follow Us
+            {/* Opening Hours */}
+            <div className="pt-6 border-t border-gray-200">
+              <h3 className="text-lg sm:text-xl font-light text-[#1f1f2e] mb-4 tracking-[0.05em]" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300, textTransform: 'none' }}>
+                Opening Hours
               </h3>
-              <div className="flex flex-wrap gap-3 sm:gap-4">
-                {socialLinks.map((social, index) => (
-                  <a
-                    key={index}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-full border border-gray-200 bg-white overflow-hidden transition-all hover:border-red-600 hover:scale-110"
-                    aria-label={social.name}
-                  >
-                    <Image
-                      src={social.icon}
-                      alt={social.name}
-                      width={56}
-                      height={56}
-                      className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
-                    />
-                  </a>
-                ))}
+              <div className="space-y-3">
+                <div className="flex items-center justify-between pb-3 border-b border-gray-100">
+                  <span className="text-sm font-light text-[#1f1f2e]" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>Monday - Tuesday</span>
+                  <span className="text-sm text-[#555] font-light" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>9:00 AM - 6:00 PM</span>
+                </div>
+                <div className="flex items-center justify-between pb-3 border-b border-gray-100">
+                  <span className="text-sm font-light text-[#1f1f2e]" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>Wednesday - Friday</span>
+                  <span className="text-sm text-[#555] font-light" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>8:00 AM - 5:00 PM</span>
+                </div>
+                <div className="flex items-center justify-between pb-3 border-b border-gray-100">
+                  <span className="text-sm font-light text-[#1f1f2e]" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>Saturday</span>
+                  <span className="text-sm text-[#555] font-light" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>9:00 AM - 3:00 PM</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-sm font-light text-[#1f1f2e]" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>Sunday</span>
+                  <span className="text-sm text-[#555] font-light" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>Closed</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Map Section - Full Width */}
-        <div className="bg-white rounded-2xl border border-gray-200 p-4 sm:p-6 md:p-8 lg:p-10 shadow-sm mb-8 sm:mb-12 md:mb-16">
+        {/* The SCENT Advantage Section */}
+        <div className="mb-12 sm:mb-16">
+          <div className="text-center mb-8 sm:mb-12">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-light text-[#1f1f2e] mb-4 tracking-[0.05em]" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300, textTransform: 'none' }}>
+              The SCENT Advantage for Your Salon Franchise in Bangalore
+            </h2>
+            <div className="flex items-center justify-center gap-3 sm:gap-4 mb-6">
+              <span className="h-px w-12 sm:w-20 bg-[#1f1f2e]" />
+              <span className="text-pink-400 text-lg sm:text-xl">❀</span>
+              <span className="h-px w-12 sm:w-20 bg-[#1f1f2e]" />
+            </div>
+            <p className="text-base sm:text-lg leading-relaxed text-[#555] max-w-3xl mx-auto font-light" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
+              When you decide to open a Salon Franchise in Bangalore with SCENT, you're not just opening a salon; you're becoming part of a brand that is synonymous with luxury, style, and cutting-edge beauty trends. Our franchise model comes with numerous benefits:
+            </p>
+          </div>
+
+          <div className="relative">
+            <div className="overflow-hidden">
+              <div 
+                className="flex gap-6 sm:gap-8 transition-transform duration-500 ease-in-out"
+                style={{ transform: `translateX(-${advantagesIndex * (100 / itemsPerView.advantages.desktop)}%)` }}
+              >
+                {advantages.map((advantage, index) => (
+                  <div
+                    key={index}
+                    className="group relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-6 sm:p-8 shadow-[0_25px_70px_rgba(0,0,0,0.05)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_35px_90px_rgba(0,0,0,0.12)] flex-shrink-0 w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]"
+                  >
+                    <div className="absolute top-0 right-0 h-32 w-32 bg-pink-50/50 rounded-full -mr-16 -mt-16 transition-all duration-500 group-hover:scale-150 group-hover:bg-pink-100/50" />
+                    <div className="relative">
+                      <div className="mb-4 flex items-start gap-4">
+                        <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-black text-white transition-all duration-300 group-hover:bg-[#1a1a1a] group-hover:scale-110">
+                          <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                          </svg>
+                        </div>
+                        <h3 className="text-base sm:text-lg md:text-xl font-light text-[#1f1f2e] tracking-[0.05em]" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300, textTransform: 'none' }}>
+                          {advantage.title}
+                        </h3>
+                      </div>
+                      <p className="text-sm sm:text-base leading-relaxed text-[#555] font-light" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
+                        {advantage.description}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="mt-6 flex items-center justify-center gap-4">
+              <button
+                type="button"
+                onClick={handleAdvantagesPrev}
+                aria-label="Previous advantage"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 bg-white text-xl font-light text-black transition-all hover:border-black hover:bg-gray-50"
+              >
+                ‹
+              </button>
+              <button
+                type="button"
+                onClick={handleAdvantagesNext}
+                aria-label="Next advantage"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 bg-white text-xl font-light text-black transition-all hover:border-black hover:bg-gray-50"
+              >
+                ›
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Steps Section */}
+        <div className="mb-12 sm:mb-16">
+          <div className="text-center mb-8 sm:mb-12">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-light text-[#1f1f2e] mb-4 tracking-[0.05em]" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300, textTransform: 'none' }}>
+              Steps to Open Your Salon Franchise in Bangalore with SCENT
+            </h2>
+            <div className="flex items-center justify-center gap-3 sm:gap-4 mb-6">
+              <span className="h-px w-12 sm:w-20 bg-[#1f1f2e]" />
+              <span className="text-pink-400 text-lg sm:text-xl">❀</span>
+              <span className="h-px w-12 sm:w-20 bg-[#1f1f2e]" />
+            </div>
+            <p className="text-base sm:text-lg leading-relaxed text-[#555] max-w-3xl mx-auto font-light" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
+              Opening a Salon Franchise in Bangalore with SCENT is a straightforward process designed to get you up and running quickly:
+            </p>
+          </div>
+
+          <div className="relative">
+            <div className="overflow-hidden">
+              <div 
+                className="flex gap-6 sm:gap-8 transition-transform duration-500 ease-in-out"
+                style={{ transform: `translateX(-${stepsIndex * (100 / itemsPerView.steps.desktop)}%)` }}
+              >
+                {steps.map((step, index) => (
+                  <div
+                    key={index}
+                    className="group flex gap-6 sm:gap-8 rounded-2xl border border-gray-200 bg-white p-6 sm:p-8 shadow-[0_25px_70px_rgba(0,0,0,0.05)] transition-all duration-500 hover:shadow-[0_35px_90px_rgba(0,0,0,0.12)] hover:-translate-y-1 flex-shrink-0 w-full lg:w-[calc(50%-0.75rem)]"
+                  >
+                    <div className="flex h-16 w-16 sm:h-20 sm:w-20 flex-shrink-0 items-center justify-center rounded-full bg-black text-2xl sm:text-3xl font-light text-white transition-all duration-300 group-hover:bg-[#1a1a1a] group-hover:scale-110" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
+                      {step.number}
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-base sm:text-lg md:text-xl font-light text-[#1f1f2e] mb-3 tracking-[0.05em]" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300, textTransform: 'none' }}>
+                        {step.title}
+                      </h3>
+                      <p className="text-sm sm:text-base leading-relaxed text-[#555] font-light" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
+                        {step.description}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="mt-6 flex items-center justify-center gap-4">
+              <button
+                type="button"
+                onClick={handleStepsPrev}
+                aria-label="Previous step"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 bg-white text-xl font-light text-black transition-all hover:border-black hover:bg-gray-50"
+              >
+                ‹
+              </button>
+              <button
+                type="button"
+                onClick={handleStepsNext}
+                aria-label="Next step"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 bg-white text-xl font-light text-black transition-all hover:border-black hover:bg-gray-50"
+              >
+                ›
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Find Us Section - Hidden */}
+        {/* <div className="mb-12 sm:mb-16 bg-white rounded-2xl border border-gray-200 p-4 sm:p-6 md:p-8 lg:p-10 shadow-sm">
           <div className="mb-6 sm:mb-8">
             <h3 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-[#1f1f2e] mb-4" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
               Find Us
@@ -343,16 +484,16 @@ export default function ContactSection() {
               </p>
             </div>
           </div>
-          <div className="relative h-64 sm:h-80 md:h-96 w-full overflow-hidden rounded-xl bg-gray-100 mb-6">
+          <div className="relative w-full h-64 sm:h-80 md:h-96 mb-6 rounded-xl overflow-hidden">
             <iframe
-              src="https://www.google.com/maps?q=Scent+Salon+Lavelle+Road+No+67/2+1st+Floor+Opposite+3rd+Cross+Lavelle+Road+Bengaluru+Karnataka+560001&output=embed"
+              src="https://www.google.com/maps?q=12.968992,77.59714&hl=en&z=15&output=embed"
               width="100%"
               height="100%"
-              style={{ border: 0 }}
+              style={{ border: 0, margin: 0, padding: 0, display: 'block' }}
               allowFullScreen=""
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              className="absolute inset-0"
+              className="absolute inset-0 w-full h-full"
               title="SCENT Salon Location - Lavelle Road, Bengaluru"
             />
           </div>
@@ -380,44 +521,45 @@ export default function ContactSection() {
               Open in Apple Maps
             </a>
           </div>
-        </div>
-      </div>
+        </div> */}
 
-      {/* Success Modal */}
-      {showSuccessModal && (
-        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 backdrop-blur-sm animate-fadeIn">
-          <div className="relative bg-white rounded-3xl shadow-2xl max-w-md w-full mx-4 p-8 sm:p-10 text-center animate-zoomIn">
-            {/* Success Icon */}
-            <div className="mb-6 flex justify-center">
-              <div className="relative">
-                <div className="absolute inset-0 bg-green-100 rounded-full animate-ping opacity-75"></div>
-                <div className="relative flex h-20 w-20 sm:h-24 sm:w-24 items-center justify-center rounded-full bg-gradient-to-br from-green-400 to-green-600">
-                  <svg className="h-12 w-12 sm:h-14 sm:w-14 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-              </div>
+        {/* Final CTA Section */}
+        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-black via-[#1a1a1a] to-black p-8 sm:p-12 md:p-16 text-center text-white">
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-0 left-0 h-64 w-64 rounded-full bg-white blur-3xl" />
+            <div className="absolute bottom-0 right-0 h-64 w-64 rounded-full bg-white blur-3xl" />
+          </div>
+          <div className="relative z-10">
+            <div className="mb-4 flex items-center justify-center gap-3">
+              <span className="h-px w-12 sm:w-20 bg-white/30" />
+              <span className="text-pink-400 text-xl sm:text-2xl">❀</span>
+              <span className="h-px w-12 sm:w-20 bg-white/30" />
             </div>
-
-            {/* Success Message */}
-            <h2 className="text-2xl sm:text-3xl font-semibold text-[#1f1f2e] mb-3" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
-              Message Sent Successfully!
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-light mb-6 tracking-[0.1em]" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
+              How to Get Started
             </h2>
-            <p className="text-base sm:text-lg text-gray-600 mb-6 leading-relaxed">
-              Thank you for contacting us. We've received your message and will get back to you soon.
+            <p className="text-base sm:text-lg md:text-xl leading-relaxed text-white/90 max-w-3xl mx-auto mb-8 font-light" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
+              If you're ready to take the first step toward owning a Salon Franchise in Bangalore, contact us today! Our team will provide you with all the information you need to make an informed decision and guide you through the process of becoming a SCENT franchisee. Don't miss this opportunity to be part of a brand that is redefining the beauty industry.
             </p>
-
-            {/* Countdown */}
-            <div className="flex items-center justify-center gap-2 text-sm text-gray-500">
-              <svg className="h-4 w-4 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-              </svg>
-              <span>Redirecting to home page in a moment...</span>
+            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+              <a
+                href="mailto:franchisee@scentlifestyle.com"
+                className="rounded-lg bg-white px-8 py-3.5 text-sm sm:text-base font-light uppercase tracking-[0.15em] text-black transition-all duration-300 hover:bg-gray-100 hover:scale-105 shadow-lg"
+                style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}
+              >
+                Contact Us Now
+              </a>
+              <a
+                href="tel:+919591522700"
+                className="rounded-lg border-2 border-white px-8 py-3.5 text-sm sm:text-base font-light uppercase tracking-[0.15em] text-white transition-all duration-300 hover:bg-white hover:text-black hover:scale-105"
+                style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}
+              >
+                Call Us Today
+              </a>
             </div>
           </div>
         </div>
-      )}
+      </div>
     </section>
   );
 }
-

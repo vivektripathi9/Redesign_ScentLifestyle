@@ -286,23 +286,22 @@ export default function SpaSection() {
 
       <div className="mx-auto flex w-full flex-col gap-10 px-6 py-16 md:px-12 lg:px-20">
         {/* Highlight */}
-        <div className="w-full rounded-[32px] border border-white/80 bg-gradient-to-r from-white/95 via-pink-50/80 to-purple-50/80 px-8 py-12 text-center shadow-[0px_30px_120px_rgba(255,182,193,0.25)] backdrop-blur-sm transition-all duration-500 hover:shadow-[0px_40px_140px_rgba(255,182,193,0.35)]">
-          <div className="mx-auto flex max-w-3xl flex-col gap-4">
+        <div className="w-full rounded-[24px] border border-gray-100 bg-white px-6 sm:px-8 py-6 sm:py-7 text-center shadow-[0px_20px_60px_rgba(0,0,0,0.04)]">
+          <div className="mx-auto flex max-w-3xl flex-col gap-4 sm:gap-5">
             <p
-              className="text-sm font-semibold tracking-[0.4em] text-[#C06C84]"
+              className="text-xs sm:text-sm font-light tracking-[0.3em] text-[#C06C84]"
               style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300, textTransform: 'none' }}
             >
               Urban escape
             </p>
             <h2
-              className="text-2xl font-semibold text-[#1f1f2e] sm:text-[30px] leading-tight"
+              className="text-xl sm:text-2xl md:text-[26px] font-light text-[#1f1f2e] leading-relaxed tracking-[0.05em]"
               style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}
             >
               Curated spa rituals for head, hands, feet, and full body reset.
             </h2>
-            <p className="text-base leading-relaxed text-[#555] sm:text-lg max-w-2xl mx-auto">
-              Choose a single massage or build a ritual with scrubs, stones, and signature blends for
-              a completely personalised spa journey.
+            <p className="text-sm sm:text-base leading-relaxed text-[#555] font-light max-w-2xl mx-auto" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
+              Choose a single massage or build a ritual with scrubs, stones, and signature blends for a completely personalised spa journey.
             </p>
           </div>
         </div>

@@ -123,11 +123,11 @@ function VideoCarousel() {
 const serviceCategories = [
   {
     id: "haircut-styling",
-    title: "Haircut & Styling",
+    title: "Haircut",
     description:
       "Signature dry and wet cutting, precision texturising, and couture blowouts designed to frame your features while keeping movement natural. Every session begins with a detailed face-shape consultation so your cut stays effortless for weeks.",
     detailedDescription:
-      "Our Haircut & Styling service is a comprehensive hair transformation experience. We specialize in both dry and wet cutting techniques, allowing us to work with your hair's natural texture. Our expert stylists use precision texturising methods to add movement and dimension. Each session includes a personalized face-shape consultation to ensure your cut complements your features perfectly. We offer couture blowouts that give you that salon-fresh look, and our cuts are designed to grow out beautifully, staying effortless for weeks. Whether you want a classic cut, a modern layered style, or a precision bob, our Sassoon-trained stylists will create a look that's uniquely yours.",
+      "Our Haircut service is a comprehensive hair transformation experience. We specialize in both dry and wet cutting techniques, allowing us to work with your hair's natural texture. Our expert stylists use precision texturising methods to add movement and dimension. Each session includes a personalized face-shape consultation to ensure your cut complements your features perfectly. We offer couture blowouts that give you that salon-fresh look, and our cuts are designed to grow out beautifully, staying effortless for weeks. Whether you want a classic cut, a modern layered style, or a precision bob, our Sassoon-trained stylists will create a look that's uniquely yours.",
     image: "/hairdresser-taking-care-her-client.jpg",
     services: [
       { name: "Classic Haircut", price: "₹1,299" },
@@ -140,11 +140,11 @@ const serviceCategories = [
   },
   {
     id: "highlights-streaks",
-    title: "Highlights & Streaks",
+    title: "Colour",
     description:
       "Lived-in balayage, foil brilliance, and bold streaks created with bond-protect colour systems that keep hair glossy. We map complexion, undertone, and lifestyle before placing a single foil so the light always hits right.",
     detailedDescription:
-      "Our Highlights & Streaks service transforms your hair with professional color techniques. We specialize in lived-in balayage that creates natural-looking dimension, foil highlights for precise color placement, and bold streaks for those who want to make a statement. All our coloring services use bond-protect color systems that not only add beautiful color but also strengthen and protect your hair, keeping it glossy and healthy. Before we place a single foil, we conduct a thorough consultation analyzing your skin complexion, undertones, and lifestyle to ensure the color placement is perfect. Our techniques ensure the light always hits right, creating depth and dimension that looks natural and grows out beautifully.",
+      "Our Colour service transforms your hair with professional color techniques. We specialize in lived-in balayage that creates natural-looking dimension, foil highlights for precise color placement, and bold streaks for those who want to make a statement. All our coloring services use bond-protect color systems that not only add beautiful color but also strengthen and protect your hair, keeping it glossy and healthy. Before we place a single foil, we conduct a thorough consultation analyzing your skin complexion, undertones, and lifestyle to ensure the color placement is perfect. Our techniques ensure the light always hits right, creating depth and dimension that looks natural and grows out beautifully.",
     image: "/elegant-makeup-portrait.jpg",
     services: [
       { name: "Global Balayage", price: "₹5,999" },
@@ -156,29 +156,12 @@ const serviceCategories = [
     ],
   },
   {
-    id: "hair-spa",
-    title: "Hair Spa Rituals",
-    description:
-      "Steam-powered rituals that combine scalp brushing, booster ampoules, and pressure-point massage to restore shine, strength, and calm. Choose hydration, detox, or shine protocols crafted specifically for your scalp condition.",
-    detailedDescription:
-      "Our Hair Spa Rituals are luxurious, steam-powered treatments designed to restore your hair's natural health and vitality. Each ritual combines therapeutic scalp brushing to stimulate circulation, specialized booster ampoules packed with nourishing ingredients, and relaxing pressure-point massage techniques. We offer three distinct protocols: Hydration for dry, damaged hair that needs moisture; Detox for removing product buildup and impurities; and Shine for restoring natural luster and gloss. Our expert therapists assess your scalp condition and customize the treatment to address your specific needs. The steam therapy opens hair cuticles, allowing deep penetration of nutrients, while the massage promotes relaxation and reduces stress. This comprehensive approach not only improves hair health but also provides a calming, rejuvenating experience.",
-    image: "/young-woman-relaxing-spa-salon.jpg",
-    services: [
-      { name: "Hydra Repair Spa", price: "₹2,299" },
-      { name: "Keratin Spa Ritual", price: "₹2,899" },
-      { name: "Scalp Detox Steam", price: "₹1,999" },
-      { name: "Damage Reset Spa", price: "₹2,499" },
-      { name: "Ice Head Spa", price: "₹2,099" },
-      { name: "Aromatic Calm Spa", price: "₹1,899" },
-    ],
-  },
-  {
     id: "hair-treatments",
-    title: "Hair Treatments",
+    title: "Treatments",
     description:
       "Clinical-strength keratin, botox, and bond-building therapies that tame frizz, seal the cuticle, and repair damage from within. Ideal before milestone events or as seasonal hair rehab for stressed strands.",
     detailedDescription:
-      "Our Hair Treatments are intensive, clinical-strength therapies designed to transform damaged, frizzy, or stressed hair. We offer keratin treatments that smooth and straighten hair while adding strength and shine. Our hair botox therapy provides deep conditioning and repair, filling in gaps in damaged hair cuticles. Bond-building treatments like Olaplex work at the molecular level to repair broken disulfide bonds, restoring hair's structural integrity. These treatments effectively tame frizz, seal the cuticle for smoothness, and repair damage from within. Perfect for preparing for milestone events like weddings or special occasions, or as seasonal hair rehabilitation for hair that's been stressed by styling, coloring, or environmental factors. Each treatment is customized to your hair's specific needs and condition.",
+      "Our Treatments are intensive, clinical-strength therapies designed to transform damaged, frizzy, or stressed hair. We offer keratin treatments that smooth and straighten hair while adding strength and shine. Our hair botox therapy provides deep conditioning and repair, filling in gaps in damaged hair cuticles. Bond-building treatments like Olaplex work at the molecular level to repair broken disulfide bonds, restoring hair's structural integrity. These treatments effectively tame frizz, seal the cuticle for smoothness, and repair damage from within. Perfect for preparing for milestone events like weddings or special occasions, or as seasonal hair rehabilitation for hair that's been stressed by styling, coloring, or environmental factors. Each treatment is customized to your hair's specific needs and condition.",
     image: "/beautiful-woman-with-towel-holding-lily.jpg",
     services: [
       { name: "Keratin Therapy", price: "₹6,499" },
@@ -190,37 +173,20 @@ const serviceCategories = [
     ],
   },
   {
-    id: "beard-styling",
-    title: "Beard Styling",
+    id: "hair-spa",
+    title: "Hairspa",
     description:
-      "Clipper fades, razor detailing, and nourishing oils curated for contemporary beards and classic grooms alike. We map face shape, neckline, and growth pattern to deliver silhouettes that stay sharp for days.",
+      "Steam-powered rituals that combine scalp brushing, booster ampoules, and pressure-point massage to restore shine, strength, and calm. Choose hydration, detox, or shine protocols crafted specifically for your scalp condition.",
     detailedDescription:
-      "Our Beard Styling service is a precision grooming experience tailored to your unique facial features. We specialize in clipper fades that create seamless transitions, razor detailing for sharp, clean lines, and the application of nourishing oils that keep your beard healthy and manageable. Our expert barbers analyze your face shape, natural neckline, and growth patterns to design a beard silhouette that complements your features perfectly. Whether you prefer a contemporary, modern look or a classic, traditional style, we craft your beard to stay sharp and well-groomed for days. Our services include precision trims, hot towel shaves for the ultimate smooth finish, color blending for a natural look, and spa rituals that condition and style your beard. Every service is performed with professional tools and premium products to ensure the best results.",
-    image: "/beard.jpg",
+      "Our Hairspa are luxurious, steam-powered treatments designed to restore your hair's natural health and vitality. Each ritual combines therapeutic scalp brushing to stimulate circulation, specialized booster ampoules packed with nourishing ingredients, and relaxing pressure-point massage techniques. We offer three distinct protocols: Hydration for dry, damaged hair that needs moisture; Detox for removing product buildup and impurities; and Shine for restoring natural luster and gloss. Our expert therapists assess your scalp condition and customize the treatment to address your specific needs. The steam therapy opens hair cuticles, allowing deep penetration of nutrients, while the massage promotes relaxation and reduces stress. This comprehensive approach not only improves hair health but also provides a calming, rejuvenating experience.",
+    image: "/young-woman-relaxing-spa-salon.jpg",
     services: [
-      { name: "Precision Beard Trim", price: "₹799" },
-      { name: "Beard Fade & Line-up", price: "₹999" },
-      { name: "Hot Towel Shave", price: "₹1,199" },
-      { name: "Colour & Blend", price: "₹1,499" },
-      { name: "Beard Spa Ritual", price: "₹1,299" },
-      { name: "Sculpt + Style", price: "₹1,099" },
-    ],
-  },
-  {
-    id: "mustache-design",
-    title: "Mustache Design",
-    description:
-      "Classic tapers, curled ends, and sculpted lines for every kind of mustache—from vintage handlebar to minimalist fades. Finish with waxes and serums so your look stays expressive from morning to midnight.",
-    detailedDescription:
-      "Our Mustache Design service is an art form that transforms your facial hair into a statement piece. We offer classic taper trims for a timeless look, curled ends for vintage handlebar styles, and sculpted lines for modern, minimalist designs. Our skilled barbers work with precision to create the perfect mustache shape that matches your personal style and facial structure. We finish every service with premium waxes that hold your style in place and nourishing serums that keep your mustache healthy and manageable. Whether you want a bold, expressive handlebar, a subtle minimalist fade, or a classic tapered look, we'll design it to stay perfect from morning to midnight. Our signature twirl technique adds character, while our color touch-up services ensure a natural, polished appearance. Each service includes styling tips and product recommendations to help you maintain your look at home.",
-    image: "/mustache.jpg",
-    services: [
-      { name: "Classic Taper Trim", price: "₹399" },
-      { name: "Handlebar Styling", price: "₹699" },
-      { name: "Wax & Finish", price: "₹499" },
-      { name: "Signature Twirl", price: "₹599" },
-      { name: "Colour Touch-up", price: "₹799" },
-      { name: "Nourish Serum Boost", price: "₹549" },
+      { name: "Hydra Repair Spa", price: "₹2,299" },
+      { name: "Keratin Spa Ritual", price: "₹2,899" },
+      { name: "Scalp Detox Steam", price: "₹1,999" },
+      { name: "Damage Reset Spa", price: "₹2,499" },
+      { name: "Ice Head Spa", price: "₹2,099" },
+      { name: "Aromatic Calm Spa", price: "₹1,899" },
     ],
   },
 ];
@@ -281,10 +247,10 @@ export default function ServicesSection() {
 
       <div className="flex w-full flex-col items-center gap-8 px-20 py-12">
         {/* Header */}
-        <div className="flex flex-col items-center gap-4 text-center">
+        <div className="flex flex-col items-center gap-6 sm:gap-8 text-center px-4 sm:px-6">
           <h2
-            className="text-4xl font-light leading-tight text-[#2A2A35] sm:text-[56px]"
-            style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}
+            className="text-2xl sm:text-3xl md:text-4xl font-light leading-relaxed text-[#2A2A35] tracking-[0.05em]"
+            style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300, textTransform: 'none' }}
           >
             <span
               key={mounted ? headingIndex : 0}
@@ -294,35 +260,34 @@ export default function ServicesSection() {
               {mounted ? headingPhrases[headingIndex] : headingPhrases[0]}
             </span>
           </h2>
-          <div className="decorative-flower-divider flex items-center justify-center gap-4">
-            <span className="h-px w-16 bg-black" />
-            <span className="text-pink-400 text-xl">❀</span>
-            <span className="h-px w-16 bg-black" />
+          <div className="decorative-flower-divider flex items-center justify-center gap-4 py-2">
+            <span className="h-px w-12 sm:w-16 bg-black" />
+            <span className="text-pink-400 text-lg sm:text-xl">❀</span>
+            <span className="h-px w-12 sm:w-16 bg-black" />
           </div>
-          <p className="max-w-3xl text-base leading-relaxed text-[#555] sm:text-lg font-light" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
+          <p className="max-w-3xl text-sm sm:text-base leading-relaxed text-[#555] font-light px-2" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
             Discover our comprehensive range of beauty and wellness services, each designed to help you look and feel your absolute best.
           </p>
         </div>
 
         {/* Bangalore Highlight */}
-        <div className="w-full rounded-[28px] border border-gray-100 bg-white px-10 py-8 text-center shadow-[0px_25px_70px_rgba(0,0,0,0.05)]">
-          <p className="text-sm font-light tracking-[0.4em] text-[#C06C84]" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300, textTransform: 'none' }}>
+        <div className="w-full rounded-[24px] border border-gray-100 bg-white px-6 sm:px-8 py-6 sm:py-7 text-center shadow-[0px_20px_60px_rgba(0,0,0,0.04)]">
+          <p className="text-xs sm:text-sm font-light tracking-[0.35em] text-[#C06C84]" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300, textTransform: 'none' }}>
             Bangalore flagship menu
           </p>
           <h3
-            className="mt-3 text-2xl font-light text-[#1f1f2e] sm:text-[30px] transition-all duration-700 ease-out hover:scale-[1.02] hover:text-[#C06C84]"
+            className="mt-2 sm:mt-3 text-xl sm:text-2xl md:text-[26px] font-light text-[#1f1f2e] leading-relaxed tracking-[0.05em] transition-all duration-700 ease-out hover:scale-[1.01] hover:text-[#C06C84]"
             style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}
           >
-            Six signature rituals covering every strand — from cuts to mustache finesse.
+            Four signature services covering every strand — from haircuts to hairspa.
           </h3>
-          <p className="mt-4 text-base leading-relaxed text-[#555] sm:text-lg font-light" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
-            Choose your lane: haircuts, highlights, spa rituals, intensive treatments, beard styling, or mustache design.
-            Each service is crafted by Sassoon-trained stylists for flawless results.
+          <p className="mt-3 text-sm sm:text-base leading-relaxed text-[#555] font-light max-w-2xl mx-auto" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
+            Choose your lane: haircut, colour, treatments, or hairspa. Each service is crafted by Sassoon-trained stylists for flawless results.
           </p>
         </div>
 
         {/* Service Categories Grid */}
-        <div className="grid w-full gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid w-full gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-4">
           {serviceCategories.map((category) => {
             const isActive = activeService === category.id;
             return (

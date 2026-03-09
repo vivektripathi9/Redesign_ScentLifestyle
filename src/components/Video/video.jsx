@@ -58,6 +58,16 @@ export default function BeautyVideoHero() {
 
   return (
     <section className="bg-white py-4 sm:py-6 md:py-8 lg:py-12">
+      <div className="flex flex-col items-center gap-3 sm:gap-4 text-center mb-6 sm:mb-8 md:mb-10">
+        <h3 className="text-2xl sm:text-3xl md:text-[42px] font-light leading-tight text-[#1f1f2e] tracking-[0.1em]" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300, textTransform: 'none' }}>
+          Watch beauty in action
+        </h3>
+        <div className="decorative-flower-divider flex items-center justify-center gap-3 sm:gap-4 text-gray-300">
+          <span className="h-px w-10 sm:w-12 bg-black" />
+          <span className="text-pink-400 text-lg sm:text-xl">❀</span>
+          <span className="h-px w-10 sm:w-12 bg-black" />
+        </div>
+      </div>
       <div className="relative w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden bg-gray-900">
         {isLoading && <VideoLoader />}
         {hasError ? (

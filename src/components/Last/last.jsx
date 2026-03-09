@@ -1,15 +1,21 @@
 import Image from "next/image";
 
-const quickLinks = ["About Us", "Service", "Product", "Blog", "Team", "Faqs"];
+const quickLinks = [
+  { name: "About Us", href: "/#about" },
+  { name: "Services", href: "/services" },
+  { name: "Memberships", href: "/salon-memberships" },
+  { name: "Franchise", href: "/franchise" },
+  { name: "Contact", href: "/contact" },
+];
 const recentPosts = [
   { title: "Only 1 week of the year!", date: "April 08, 2019" },
   { title: "Best tips for munu beauty", date: "April 08, 2019" },
   { title: "Our favorite makeup tips", date: "April 08, 2019" },
 ];
 const hours = [
-  { day: "Mon - Tue", time: "9.00 AM - 18.00 PM" },
-  { day: "Wed - Fri", time: "8.00 AM - 17.00 PM" },
-  { day: "Saturday", time: "9.00 PM - 15.00 PM" },
+  { day: "Mon - Tue", time: "9:00 AM - 6:00 PM" },
+  { day: "Wed - Fri", time: "8:00 AM - 5:00 PM" },
+  { day: "Saturday", time: "9:00 AM - 3:00 PM" },
   { day: "Sunday", time: "Closed" },
 ];
 const socialIcons = [
@@ -66,8 +72,14 @@ export default function Footer() {
           <span className="block h-px w-full bg-gray-300 mb-3 sm:mb-4" />
           <ul className="space-y-1.5 sm:space-y-2 text-sm sm:text-[16px] font-light text-black" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
             {quickLinks.map((link) => (
-              <li key={link} className="transition hover:text-[#2E2E2E] cursor-pointer tracking-[0.05em]" style={{ textTransform: 'none' }}>
-                {link}
+              <li key={link.name}>
+                <a 
+                  href={link.href} 
+                  className="transition hover:text-[#2E2E2E] cursor-pointer tracking-[0.05em] block" 
+                  style={{ textTransform: 'none' }}
+                >
+                  {link.name}
+                </a>
               </li>
             ))}
           </ul>
@@ -108,9 +120,6 @@ export default function Footer() {
             Opening hours
           </h3>
           <span className="block h-px w-full bg-gray-300 mb-3 sm:mb-4" />
-          <p className="description-main !text-left mb-3 sm:mb-4">
-            Lorem ipsum dolor sit amet, consect adipisicing elit, sed do eiusmod tempor inci-didunt.
-          </p>
           <ul className="space-y-1.5 sm:space-y-2 text-left text-xs sm:text-xs md:text-xs text-black font-light" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
             {hours.map((hour) => (
               <li key={hour.day}>
@@ -123,7 +132,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom Bar: Copyright and Payment Icons */}
-      <div className="bg-White">
+      <div className="bg-white border-t border-gray-200">
         <div className="mx-auto w-full max-w-7xl flex flex-col items-center justify-between gap-3 sm:gap-4 px-4 sm:px-6 md:px-12 lg:px-20 py-3 sm:py-4 text-xs sm:text-[14px] text-black sm:flex-row">
           <p className="font-light text-center sm:text-left" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
             Designed By <span className="font-light">Pinakkaa</span> © 2025

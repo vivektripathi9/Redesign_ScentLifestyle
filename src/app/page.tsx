@@ -1,18 +1,72 @@
+import dynamic from "next/dynamic";
 import Navbar from "@/components/Navbar";
 import FashionHero from "@/components/Hero/FashionHero";
-import CocoSection from "@/components/Coco/CocoSection";
-// import BeautyHero from "@/components/Beauty/beauty";
-import StatementSection from "@/components/Statment/statment";
-import BlackStats from "@/components/Black/black";
-import LooksSection from "@/components/Looks/looks";
-import BeautyVideoHero from "@/components/Video/video";
-import TrustedBy from "@/components/Trustedby/trusted";
-import FindNearest from "@/components/Findyour/find";
-import WhyScent from "@/components/why/why";
-// import PowerTeam from "@/components/Thepower/thepower";
-import InspirationSection from "@/components/Inspiration/inspiration";
-import TransformationStories from "@/components/Transforming/tran";
-import Footer from "@/components/Last/last";
+
+// Above-the-fold components - load immediately
+const CocoSection = dynamic(() => import("@/components/Coco/CocoSection"), {
+  ssr: true,
+});
+
+// Below-the-fold components - lazy load for better performance
+const StatementSection = dynamic(() => import("@/components/Statment/statment"), {
+  loading: () => null,
+  ssr: true,
+});
+
+const BlackStats = dynamic(() => import("@/components/Black/black"), {
+  loading: () => null,
+  ssr: true,
+});
+
+const LooksSection = dynamic(() => import("@/components/Looks/looks"), {
+  loading: () => null,
+  ssr: true,
+});
+
+const WelcomeSection = dynamic(() => import("@/components/Welcome/welcome"), {
+  loading: () => null,
+  ssr: true,
+});
+
+const BeautyVideoHero = dynamic(() => import("@/components/Video/video"), {
+  loading: () => null,
+  ssr: true,
+});
+
+const MembershipsSection = dynamic(() => import("@/components/Memberships/memberships"), {
+  loading: () => null,
+  ssr: true,
+});
+
+const TrustedBy = dynamic(() => import("@/components/Trustedby/trusted"), {
+  loading: () => null,
+  ssr: true,
+});
+
+const FindNearest = dynamic(() => import("@/components/Findyour/find"), {
+  loading: () => null,
+  ssr: true,
+});
+
+const WhyScent = dynamic(() => import("@/components/why/why"), {
+  loading: () => null,
+  ssr: true,
+});
+
+const InspirationSection = dynamic(() => import("@/components/Inspiration/inspiration"), {
+  loading: () => null,
+  ssr: true,
+});
+
+const TransformationStories = dynamic(() => import("@/components/Transforming/tran"), {
+  loading: () => null,
+  ssr: true,
+});
+
+const Footer = dynamic(() => import("@/components/Last/last"), {
+  loading: () => null,
+  ssr: true,
+});
 
 export default function Home() {
   return (
@@ -23,9 +77,11 @@ export default function Home() {
       {/* <BeautyHero /> */}
       <main className="flex w-full flex-1 flex-col gap-0 py-0">
         <StatementSection />
-        <BlackStats />
         <LooksSection />
+        <BlackStats />
+        <WelcomeSection />
         <BeautyVideoHero />
+        <MembershipsSection />
         <TrustedBy />
         <FindNearest />
         <WhyScent />

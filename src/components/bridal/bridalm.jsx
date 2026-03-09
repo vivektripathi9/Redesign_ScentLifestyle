@@ -124,22 +124,23 @@ export default function BridalExperience() {
               <span className="text-amber-400 text-3xl">❀</span>
             </div>
             <h2 
-              className="mt-4 text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-semibold text-[#1f1f2e] leading-tight transition-all duration-700 hover:scale-105" 
+              className="mt-4 sm:mt-6 text-2xl sm:text-3xl md:text-4xl font-light text-[#1f1f2e] leading-relaxed tracking-[0.05em] transition-all duration-700" 
               style={{ 
                 fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300,
                 animation: "fadeInUp 0.8s ease-out 0.4s forwards",
                 opacity: 0,
-                textShadow: "0 2px 20px rgba(240,144,174,0.2)",
+                textTransform: 'none',
               }}
             >
               Three Signature<br />
               <span className="bg-gradient-to-r from-[#C06C84] to-[#d87a9a] bg-clip-text text-transparent">Bridal Looks</span>
             </h2>
             <p 
-              className="mt-8 text-xl sm:text-2xl md:text-3xl text-gray-700 max-w-4xl mx-auto leading-relaxed transition-all duration-500 hover:text-gray-800 font-light"
+              className="mt-6 sm:mt-8 text-sm sm:text-base md:text-lg text-gray-700 max-w-4xl mx-auto leading-relaxed transition-all duration-500 hover:text-gray-800 font-light px-2"
               style={{
                 animation: "fadeInUp 0.8s ease-out 0.6s forwards",
                 opacity: 0,
+                fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300,
               }}
             >
               Tap into our couture packages or build a bespoke itinerary with your bridal manager.

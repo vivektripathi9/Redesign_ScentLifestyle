@@ -137,15 +137,15 @@ export default function NewServicesShowcase() {
 
         <div className="relative mx-auto w-full max-w-7xl px-6 md:px-12 lg:px-20">
           {/* Section Header */}
-          <div className="mb-16 text-center">
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-pink-100 px-5 py-2 text-xs font-light text-pink-600 shadow-lg" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
+          <div className="mb-16 text-center px-4 sm:px-6">
+            <div className="mb-4 sm:mb-6 inline-flex items-center gap-2 rounded-full bg-pink-100 px-4 sm:px-5 py-2 text-xs font-light text-pink-600 shadow-lg" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
               <span className="text-pink-500 text-lg">❀</span> Our Services
             </div>
-            <h2 className="mb-4 text-4xl font-light leading-tight text-[#1f1f2e] md:text-5xl lg:text-6xl" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
+            <h2 className="mb-4 sm:mb-6 text-2xl sm:text-3xl md:text-4xl font-light leading-relaxed text-[#1f1f2e] tracking-[0.05em]" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300, textTransform: 'none' }}>
               Discover Excellence
             </h2>
-            <div className="mx-auto w-24 h-px bg-gradient-to-r from-transparent via-pink-300 to-transparent mb-6" />
-            <p className="mx-auto max-w-2xl text-base leading-relaxed text-[#666] md:text-lg font-light" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
+            <div className="mx-auto w-12 sm:w-16 h-px bg-gradient-to-r from-transparent via-pink-300 to-transparent mb-4 sm:mb-6" />
+            <p className="mx-auto max-w-2xl text-sm sm:text-base leading-relaxed text-[#666] font-light px-2" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
               Explore our comprehensive range of premium beauty and wellness services, each crafted to perfection
             </p>
           </div>

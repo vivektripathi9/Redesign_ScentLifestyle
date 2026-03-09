@@ -178,7 +178,7 @@ export default function ContactSection() {
                 <span className="h-px w-12 bg-[#1f1f2e]" />
                 <span className="text-pink-400 text-lg">❀</span>
                 <span className="h-px w-12 bg-[#1f1f2e]" />
-              </div>
+                </div>
               <p className="text-sm sm:text-base text-[#555]">
               Fill out the form below and we'll get back to you as soon as possible.
             </p>
@@ -215,7 +215,7 @@ export default function ContactSection() {
                   style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}
                     placeholder="your.email@example.com"
                   />
-              </div>
+                </div>
                 <div>
                 <label htmlFor="phone" className="block text-xs sm:text-sm font-light text-[#1f1f2e] mb-2 tracking-[0.1em]" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300, textTransform: 'none' }}>
                     Phone
@@ -231,8 +231,8 @@ export default function ContactSection() {
                   style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}
                   placeholder="+91 1234567890"
                   />
-              </div>
-              <div>
+                </div>
+                <div>
                 <label htmlFor="details" className="block text-xs sm:text-sm font-light text-[#1f1f2e] mb-2 tracking-[0.1em]" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300, textTransform: 'none' }}>
                   Details
                 </label>
@@ -420,7 +420,7 @@ export default function ContactSection() {
             <p className="text-base sm:text-lg leading-relaxed text-[#555] max-w-3xl mx-auto font-light" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
               Opening a Salon Franchise in Bangalore with SCENT is a straightforward process designed to get you up and running quickly:
             </p>
-          </div>
+            </div>
 
           <div className="relative">
             <div className="overflow-hidden">
@@ -528,13 +528,13 @@ export default function ContactSection() {
           <div className="absolute inset-0 opacity-10">
             <div className="absolute top-0 left-0 h-64 w-64 rounded-full bg-white blur-3xl" />
             <div className="absolute bottom-0 right-0 h-64 w-64 rounded-full bg-white blur-3xl" />
-          </div>
+                </div>
           <div className="relative z-10">
             <div className="mb-4 flex items-center justify-center gap-3">
               <span className="h-px w-12 sm:w-20 bg-white/30" />
               <span className="text-pink-400 text-xl sm:text-2xl">❀</span>
               <span className="h-px w-12 sm:w-20 bg-white/30" />
-            </div>
+              </div>
             <h2 className="text-xl sm:text-2xl md:text-3xl font-light mb-6 tracking-[0.1em]" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
               How to Get Started
             </h2>

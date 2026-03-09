@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 const menuItems = [
   "Home",
   "Services",
-  "Salon Memberships",
+  "Memberships",
   "Shops",
   "Franchise",
   "Academy",
@@ -236,7 +236,7 @@ export default function Navbar() {
     { name: "Skincare", href: "/new-service", category: "Service" },
     { name: "Makeup", href: "/bridal", category: "Service" },
     { name: "Massage Therapy", href: "/spa", category: "Service" },
-    { name: "Salon Memberships", href: "/salon-memberships", category: "Page" },
+    { name: "Memberships", href: "/salon-memberships", category: "Page" },
     { name: "Franchise", href: "/franchise", category: "Page" },
     { name: "Academy", href: "/academy", category: "Page" },
     { name: "Contact", href: "/contact", category: "Page" },
@@ -395,7 +395,7 @@ export default function Navbar() {
                     {item}
                     <span className="absolute bottom-0 left-0 w-0 h-px bg-gray-400 transition-all duration-300 ease-in-out group-hover:w-full"></span>
                   </a>
-                ) : item === "Salon Memberships" ? (
+                ) : item === "Memberships" ? (
                   <a href="/salon-memberships" className="text-xs sm:text-xs md:text-sm lg:text-sm uppercase tracking-[0.15em] font-semibold text-black hover:text-gray-800 transition-all duration-300 ease-in-out relative leading-none inline-block align-middle" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 600 }}>
                     {item}
                     <span className="absolute bottom-0 left-0 w-0 h-px bg-gray-400 transition-all duration-300 ease-in-out group-hover:w-full"></span>
@@ -724,7 +724,7 @@ export default function Navbar() {
                 <div className="p-6">
                   <p className="text-xs font-light text-gray-500 uppercase tracking-[0.1em] mb-3" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>Popular Searches</p>
                   <div className="flex flex-wrap gap-2">
-                    {["Hair Services", "Beauty Treatments", "Salon Memberships", "Franchise", "Academy", "Shops"].map((item, index) => (
+                    {["Hair Services", "Beauty Treatments", "Memberships", "Franchise", "Academy", "Shops"].map((item, index) => (
                     <button
                         key={index}
                       onClick={() => {
@@ -913,7 +913,7 @@ export default function Navbar() {
                     >
                       {item}
                     </a>
-                  ) : item === "Salon Memberships" ? (
+                  ) : item === "Memberships" ? (
                     <a
                       href="/salon-memberships"
                       className="block py-1.5 text-xs uppercase tracking-[0.1em] font-semibold text-black transition-all duration-200 hover:text-gray-700"

@@ -36,6 +36,12 @@ const nextConfig: NextConfig = {
   },
   // Enable compression
   compress: true,
+  // Optimize production builds
+  productionBrowserSourceMaps: false,
+  // Optimize bundle size
+  experimental: {
+    optimizePackageImports: ['@/components'],
+  },
   // Note: swcMinify is enabled by default in Next.js 16+ and cannot be disabled
 };
 

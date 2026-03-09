@@ -321,8 +321,8 @@ export default function InspirationSection() {
       <div className="mx-auto w-full max-w-7xl flex flex-col gap-8 sm:gap-12 px-4 sm:px-6 md:px-12 lg:px-20">
         <div className="flex flex-col items-center gap-3 sm:gap-4 text-center">
           <h2
-            className="text-2xl sm:text-3xl md:text-[42px] font-light leading-tight text-[#2E2E2E] uppercase tracking-[0.1em]"
-            style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}
+            className="text-xl sm:text-2xl md:text-3xl font-light leading-relaxed text-[#2E2E2E] tracking-[0.05em]"
+            style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300, textTransform: 'none' }}
           >
             Insights & Inspiration
           </h2>

@@ -19,121 +19,31 @@ const facialVideos = [
 
 const serviceChapters = [
   {
-    id: "organic-cleanup",
-    title: "Organic Cleanup Facial",
-    tagline: "Natural deep cleansing for radiant skin.",
+    id: "facials",
+    title: "Facials",
+    tagline: "Comprehensive facial treatments for radiant skin.",
     description:
-      "a gentle yet effective facial using organic ingredients to deeply cleanse and purify your skin. Removes impurities while maintaining your skin's natural balance.",
-    image: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80",
-    services: ["Organic ingredients", "Deep cleansing", "Natural balance", "Gentle exfoliation"],
+      "Experience our range of premium facial treatments designed to cleanse, rejuvenate, and restore your skin's natural glow. From deep cleansing to anti-aging therapies, we offer personalized facials tailored to your skin's unique needs.",
+    image: "/facials.jpg",
+    services: ["Deep cleansing", "Skin rejuvenation", "Customized treatments", "Premium products"],
   },
   {
-    id: "snow-white",
-    title: "Snow White Facial",
-    tagline: "Brighten and lighten for a porcelain glow.",
+    id: "waxing",
+    title: "Waxing",
+    tagline: "Smooth, hair-free skin with professional waxing services.",
     description:
-      "a specialized brightening treatment designed to lighten skin tone and reduce pigmentation. Achieve a fairer, more even complexion with this luxurious facial.",
-    image: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80",
-    services: ["Skin lightening", "Pigmentation reduction", "Brightening", "Even tone"],
+      "Achieve silky smooth skin with our professional waxing services. Our expert technicians use premium wax formulas and techniques to ensure comfortable, long-lasting results for all body areas.",
+    image: "/waxing.jpg",
+    services: ["Full body waxing", "Premium wax formulas", "Expert techniques", "Long-lasting results"],
   },
   {
-    id: "dead-sea-mineral",
-    title: "Dead Sea Mineral Facial",
-    tagline: "Mineral-rich therapy for rejuvenated skin.",
+    id: "threading",
+    title: "Threading",
+    tagline: "Precise hair removal with traditional threading technique.",
     description:
-      "harness the power of Dead Sea minerals to detoxify and rejuvenate your skin. Rich in magnesium, calcium, and potassium for ultimate skin health.",
-    image: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80",
-    services: ["Mineral therapy", "Detoxification", "Rejuvenation", "Nutrient infusion"],
-  },
-  {
-    id: "chocolate-mint",
-    title: "Chocolate Mint Facial",
-    tagline: "Indulgent treatment with antioxidant benefits.",
-    description:
-      "a luxurious combination of chocolate and mint that provides deep hydration and antioxidant protection. Soothes and nourishes your skin while you relax.",
-    image: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80",
-    services: ["Antioxidant protection", "Deep hydration", "Soothing", "Nourishing"],
-  },
-  {
-    id: "white-secret",
-    title: "White Secret",
-    tagline: "Reveal your brightest, most radiant skin.",
-    description:
-      "an advanced whitening treatment that targets dark spots and uneven skin tone. Reveal your skin's natural brightness with this secret formula.",
-    image: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80",
-    services: ["Advanced whitening", "Dark spot reduction", "Radiance boost", "Even complexion"],
-  },
-  {
-    id: "acne-cure",
-    title: "Acne Cure Facial",
-    tagline: "Targeted treatment for clear, blemish-free skin.",
-    description:
-      "a specialized facial designed to treat acne and prevent future breakouts. Deep cleansing, extraction, and healing treatments for clear, healthy skin.",
-    image: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80",
-    services: ["Acne treatment", "Deep cleansing", "Extraction", "Healing therapy"],
-  },
-  {
-    id: "diamond-glow",
-    title: "Diamond Glow Facial",
-    tagline: "Luxurious exfoliation for diamond-bright skin.",
-    description:
-      "experience the ultimate in facial exfoliation with diamond-tip technology. Removes dead skin cells and reveals a radiant, glowing complexion.",
-    image: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80",
-    services: ["Diamond exfoliation", "Deep cleansing", "Radiance", "Smooth texture"],
-  },
-  {
-    id: "anti-ageing",
-    title: "Anti Ageing Facial",
-    tagline: "Turn back time with advanced anti-aging therapy.",
-    description:
-      "combat signs of aging with this comprehensive treatment. Stimulates collagen production, reduces fine lines, and restores youthful elasticity.",
-    image: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80",
-    services: ["Collagen boost", "Fine line reduction", "Firmness", "Youthful glow"],
-  },
-  {
-    id: "gold-facial",
-    title: "Gold Facial",
-    tagline: "Luxury treatment with 24K gold benefits.",
-    description:
-      "indulge in the ultimate luxury facial infused with 24K gold particles. Anti-inflammatory and anti-aging properties for radiant, youthful skin.",
-    image: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80",
-    services: ["24K gold infusion", "Anti-aging", "Luxury treatment", "Radiance"],
-  },
-  {
-    id: "eye-protection",
-    title: "Eye Protection Facial",
-    tagline: "Specialized care for delicate eye area.",
-    description:
-      "targeted treatment for the delicate eye area to reduce dark circles, puffiness, and fine lines. Restore brightness and youthfulness to your eyes.",
-    image: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80",
-    services: ["Dark circle reduction", "Puffiness relief", "Fine line treatment", "Brightening"],
-  },
-  {
-    id: "hydra-lifting",
-    title: "Hydra Lifting Ocean Miracle",
-    tagline: "Deep hydration with lifting benefits.",
-    description:
-      "experience the miracle of ocean-based ingredients combined with advanced hydrating technology. Lifts and firms while providing intense moisture.",
-    image: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80",
-    services: ["Deep hydration", "Lifting effect", "Firming", "Ocean minerals"],
-  },
-  {
-    id: "luminous-lightening",
-    title: "Luminous Lightening Facial",
-    tagline: "Illuminate your natural radiance.",
-    description:
-      "a comprehensive lightening treatment that brightens your complexion and reduces pigmentation. Achieve a luminous, even-toned appearance.",
-    image: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80",
-    services: ["Skin lightening", "Pigmentation reduction", "Brightening", "Even tone"],
-  },
-  {
-    id: "brazilian-lightening",
-    title: "Brazilian Skin Lightening",
-    tagline: "Treatment for intimate areas, no more darkness.",
-    description:
-      "specialized treatment for intimate areas to reduce darkness and achieve even skin tone. Safe, effective, and designed for sensitive areas. When doing this regularly, maintain beautiful, even-toned skin.",
-    image: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80",
-    services: ["Intimate area treatment", "Darkness reduction", "Even skin tone", "Safe & effective"],
+      "Experience the art of threading, a traditional hair removal method that provides precise, clean results. Perfect for eyebrows, upper lip, and facial hair removal with minimal irritation and natural precision.",
+    image: "/threading.jpg",
+    services: ["Eyebrow shaping", "Facial threading", "Precise technique", "Minimal irritation"],
   },
 ];
 
@@ -143,9 +53,9 @@ export default function FacialExperience() {
   const videoRef = useRef(null);
 
   // Split services into sections
-  const mainServices = serviceChapters.slice(0, 4); // 4 Main service sections
-  const secondaryServices = serviceChapters.slice(4, 8); // 4 Secondary services in grid
-  const remainingServices = serviceChapters.slice(8, 13); // Remaining 5 services
+  const mainServices = serviceChapters; // All 3 services
+  const secondaryServices = []; // Hide secondary services
+  const remainingServices = []; // Hide remaining services
 
   useEffect(() => {
     if (videoRef.current) {
@@ -175,23 +85,23 @@ export default function FacialExperience() {
       {/* 2. Four Main Service Sections */}
       <section className="bg-white py-20 md:py-28">
         <div className="mx-auto w-full max-w-7xl px-6 md:px-12">
-          <div className="mb-16 text-center">
-            <p className="mb-4 inline-flex items-center gap-2 text-xs uppercase tracking-[0.5em] text-pink-400">
-              <span className="text-pink-500 text-xl">❀</span> Premium Services
+          <div className="mb-16 text-center px-4 sm:px-6">
+            <p className="mb-4 sm:mb-6 inline-flex items-center gap-2 text-xs font-light tracking-[0.3em] text-pink-400" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300, textTransform: 'none' }}>
+              <span className="text-pink-500 text-lg sm:text-xl">❀</span> Premium Services
             </p>
-            <h2 className="mb-4 text-3xl font-semibold text-[#1f1f2e] md:text-4xl lg:text-5xl" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
-              Main Facial Services
+            <h2 className="mb-4 sm:mb-6 text-2xl sm:text-3xl md:text-4xl font-light text-[#1f1f2e] leading-relaxed tracking-[0.05em]" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300, textTransform: 'none' }}>
+              Skin
             </h2>
-            <p className="mx-auto max-w-2xl text-[#6f6f7a] text-base md:text-lg">
-              Skin coach consultation • Tech-assisted delivery • Custom mask layering
+            <p className="mx-auto max-w-2xl text-sm sm:text-base text-[#6f6f7a] font-light px-2" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
+              Professional skin care services including facials, waxing, and threading
             </p>
           </div>
 
-          <div className="space-y-24">
+          <div className="space-y-16 md:space-y-20">
             {mainServices.map((service, idx) => (
               <div
                 key={service.id}
-                className={`grid gap-12 md:grid-cols-2 md:items-center ${idx % 2 === 1 ? 'md:flex-row-reverse' : ''}`}
+                className={`grid gap-8 md:gap-12 md:grid-cols-2 md:items-center ${idx % 2 === 1 ? 'md:flex-row-reverse' : ''}`}
                 style={{ animation: `fadeInUp 0.8s ease-out ${idx * 0.2}s both` }}
               >
                 <div className={`relative h-96 overflow-hidden rounded-3xl ${idx % 2 === 1 ? 'md:order-2' : ''}`}>
@@ -240,7 +150,8 @@ export default function FacialExperience() {
         </div>
       </section>
 
-      {/* 3. Four Secondary Services in Grid */}
+      {/* 3. Four Secondary Services in Grid - Hidden */}
+      {secondaryServices.length > 0 && (
       <section className="relative overflow-hidden bg-gradient-to-b from-[#fafafa] via-white to-[#fafafa] py-20 md:py-28">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,182,193,0.05),transparent_50%)]" />
         
@@ -334,98 +245,9 @@ export default function FacialExperience() {
               </article>
             ))}
           </div>
-          
-          {/* Modal for Detailed Information */}
-          {isModalOpen && selectedService && (
-            <div 
-              className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fadeIn"
-              onClick={() => setIsModalOpen(false)}
-            >
-              <div 
-                className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-[40px] bg-white shadow-2xl transform transition-all duration-500 animate-scaleIn"
-                onClick={(e) => e.stopPropagation()}
-              >
-                {/* Close Button */}
-                <button
-                  onClick={() => setIsModalOpen(false)}
-                  className="absolute top-6 right-6 z-10 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm shadow-lg flex items-center justify-center text-gray-600 hover:bg-pink-500 hover:text-white transition-all duration-300 hover:rotate-90"
-                >
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>
-
-                {/* Modal Content */}
-                <div className="relative">
-                  {/* Hero Image */}
-                  <div className="relative h-80 md:h-96 overflow-hidden">
-                    <Image
-                      src={selectedService.image}
-                      alt={selectedService.title}
-                      fill
-                      className="object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent" />
-                    <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
-                      <h2 className="text-3xl md:text-4xl font-bold mb-2" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
-                        {selectedService.title}
-                      </h2>
-                      <p className="text-lg text-white/90">{selectedService.tagline}</p>
-                    </div>
-                  </div>
-
-                  {/* Details Section */}
-                  <div className="p-8 md:p-12">
-                    <div className="mb-8">
-                      <h3 className="text-2xl font-semibold text-[#1f1f2e] mb-4" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
-                        About This Treatment
-                      </h3>
-                      <p className="text-base leading-relaxed text-[#555]">
-                        {selectedService.description}
-                      </p>
-                    </div>
-
-                    <div className="mb-8">
-                      <h3 className="text-2xl font-semibold text-[#1f1f2e] mb-6" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
-                        What's Included
-                      </h3>
-                      <div className="grid gap-4 md:grid-cols-2">
-                        {selectedService.services.map((service, i) => (
-                          <div key={i} className="flex items-start gap-3 p-4 rounded-2xl bg-gradient-to-br from-[#fef9fb] to-white border border-pink-100">
-                            <span className="text-pink-400 text-2xl leading-none mt-1">❀</span>
-                            <span className="text-base text-[#444] font-medium">{service}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className="flex flex-col sm:flex-row gap-4">
-                      <button
-                        onClick={() => {
-                          if (typeof window !== "undefined") {
-                            const event = new CustomEvent("openBookAppointment", { detail: { service: selectedService?.title || "Facial Treatment" } });
-                            window.dispatchEvent(event);
-                            setIsModalOpen(false);
-                          }
-                        }}
-                        className="flex-1 rounded-full bg-gradient-to-r from-pink-600 via-rose-500 to-pink-600 px-8 py-4 text-base font-semibold text-white shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-105"
-                      >
-                        Book Appointment Now
-                      </button>
-                      <button 
-                        onClick={() => setIsModalOpen(false)}
-                        className="flex-1 rounded-full border-2 border-gray-300 px-8 py-4 text-base font-semibold text-[#1f1f2e] transition-all duration-300 hover:border-pink-400 hover:text-pink-600"
-                      >
-                        Close
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
         </div>
       </section>
+      )}
 
       {/* Additional Services - Remaining 5 services */}
       {remainingServices.length > 0 && (
@@ -562,12 +384,102 @@ export default function FacialExperience() {
         }
       `}</style>
 
+      {/* Modal for Detailed Information */}
+      {isModalOpen && selectedService && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fadeIn"
+          onClick={() => setIsModalOpen(false)}
+        >
+          <div 
+            className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-[40px] bg-white shadow-2xl transform transition-all duration-500 animate-scaleIn"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button */}
+            <button
+              onClick={() => setIsModalOpen(false)}
+              className="absolute top-6 right-6 z-10 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm shadow-lg flex items-center justify-center text-gray-600 hover:bg-pink-500 hover:text-white transition-all duration-300 hover:rotate-90"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            {/* Modal Content */}
+            <div className="relative">
+              {/* Hero Image */}
+              <div className="relative h-80 md:h-96 overflow-hidden">
+                <Image
+                  src={selectedService.image}
+                  alt={selectedService.title}
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
+                  <h2 className="text-3xl md:text-4xl font-bold mb-2" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
+                    {selectedService.title}
+                  </h2>
+                  <p className="text-lg text-white/90">{selectedService.tagline}</p>
+                </div>
+              </div>
+
+              {/* Details Section */}
+              <div className="p-8 md:p-12">
+                <div className="mb-8">
+                  <h3 className="text-2xl font-semibold text-[#1f1f2e] mb-4" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
+                    About This Treatment
+                  </h3>
+                  <p className="text-base leading-relaxed text-[#555]">
+                    {selectedService.description}
+                  </p>
+                </div>
+
+                <div className="mb-8">
+                  <h3 className="text-2xl font-semibold text-[#1f1f2e] mb-6" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
+                    What's Included
+                  </h3>
+                  <div className="grid gap-4 md:grid-cols-2">
+                    {selectedService.services.map((service, i) => (
+                      <div key={i} className="flex items-start gap-3 p-4 rounded-2xl bg-gradient-to-br from-[#fef9fb] to-white border border-pink-100">
+                        <span className="text-pink-400 text-2xl leading-none mt-1">❀</span>
+                        <span className="text-base text-[#444] font-medium">{service}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <button
+                    onClick={() => {
+                      if (typeof window !== "undefined") {
+                        const event = new CustomEvent("openBookAppointment", { detail: { service: selectedService?.title || "Skin Treatment" } });
+                        window.dispatchEvent(event);
+                        setIsModalOpen(false);
+                      }
+                    }}
+                    className="flex-1 rounded-full bg-gradient-to-r from-pink-600 via-rose-500 to-pink-600 px-8 py-4 text-base font-semibold text-white shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-105"
+                  >
+                    Book Appointment Now
+                  </button>
+                  <button 
+                    onClick={() => setIsModalOpen(false)}
+                    className="flex-1 rounded-full border-2 border-gray-300 px-8 py-4 text-base font-semibold text-[#1f1f2e] transition-all duration-300 hover:border-pink-400 hover:text-pink-600"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Find Nearest Section */}
       <FindNearest />
 
       {/* Video Gallery Section */}
       <div className="px-4 sm:px-6 md:px-12 lg:px-20 py-12">
-        <VideoCarousel videos={facialVideos} title="Facial Transformation Gallery" />
+        <VideoCarousel videos={facialVideos} title="Skin Care Gallery" />
       </div>
     </div>
   );

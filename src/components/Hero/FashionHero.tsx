@@ -24,12 +24,9 @@ export default function FashionHero() {
       <div className="absolute inset-0 flex flex-col items-center justify-center z-10 px-4">
         {/* Hero Text */}
         <div className="text-center mb-8 sm:mb-12 md:mb-16">
-          <h1 className="heading text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl mb-2 sm:mb-3 md:mb-4">
-            SCENT SALON,
+          <h1 className="heading text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light tracking-[0.05em]" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300, textTransform: 'none' }}>
+            SCENT – where haircut is just an excuse…
           </h1>
-          <h2 className="heading text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
-            BEAUTY REIMAGINED
-          </h2>
         </div>
         
         {/* Button */}

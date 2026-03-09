@@ -45,9 +45,14 @@ export default function WhyScent() {
   return (
     <section className="bg-white py-8 sm:py-12">
       <div className="flex w-full flex-col items-center gap-4 sm:gap-6 px-4 sm:px-6 md:px-12 lg:px-20 text-center">
-        <h2 className="text-2xl sm:text-3xl md:text-[42px] font-light leading-tight text-[#2E2E2E] tracking-[0.1em]" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300, textTransform: 'none' }}>
-          Why scent? Because you deserve more
-        </h2>
+        <div className="flex flex-col items-center mb-4 sm:mb-6 md:mb-8">
+          <h2 className="text-2xl sm:text-3xl md:text-[42px] font-light leading-tight text-[#2E2E2E] tracking-[0.1em]" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300, textTransform: 'none' }}>
+            Why scent?
+          </h2>
+          <h2 className="text-2xl sm:text-3xl md:text-[42px] font-light leading-tight text-[#2E2E2E] tracking-[0.1em]" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300, textTransform: 'none' }}>
+            Because you deserve more
+          </h2>
+        </div>
         <div className="decorative-flower-divider flex items-center justify-center gap-3 sm:gap-4">
           <span className="h-px w-10 sm:w-12 bg-black" />
           <span className="text-pink-400 text-lg sm:text-xl">❀</span>

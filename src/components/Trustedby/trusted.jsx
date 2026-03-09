@@ -4,11 +4,13 @@ import Image from "next/image";
 import { useState } from "react";
 
 const brands = [
-  { name: "OLAPLEX", logo: "/cas.png" },
-  { name: "CASMARA", logo: "/cass.png" },
-  { name: "ESTÉE LAUDER", logo: "/B3.png" },
-  { name: "Beauty Garage", logo: "/cas.png" },
-  { name: "KÉRASTASE", logo: "/cass.png" },
+  { name: "Beauty Garage", logo: "/Beauty garage.svg" },
+  { name: "Cadiveu", logo: "/Cadiveu.png" },
+  { name: "Casmara", logo: "/Casmara.png" },
+  { name: "Janssen", logo: "/Jansen.png" },
+  { name: "Olaplex", logo: "/Ola plex.png" },
+  { name: "Pedi Calm", logo: "/Pedi calm.png" },
+  { name: "Schwarzkopf", logo: "/Schwarzkopf-logo.png" },
 ];
 
 export default function TrustedBy() {
@@ -27,23 +29,25 @@ export default function TrustedBy() {
           <span className="h-px w-10 sm:w-12 bg-black" />
         </div>
         <div 
-          className="relative mt-2 sm:mt-4 w-full overflow-hidden"
+          className="relative mt-6 sm:mt-8 md:mt-10 w-full overflow-hidden"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
-          <div className="flex items-center gap-0 sm:gap-0.5 animate-scroll" style={{ animationPlayState: isPaused ? 'paused' : 'running' }}>
+          <div className="flex items-center gap-2 sm:gap-3 md:gap-4 animate-scroll" style={{ animationPlayState: isPaused ? 'paused' : 'running' }}>
             {duplicatedBrands.map((brand, index) => (
               <div
                 key={`${brand.name}-${index}`}
-                className="flex items-center justify-center px-0 sm:px-0.5 flex-shrink-0"
+                className="flex items-center justify-center flex-shrink-0 w-32 h-20 sm:w-36 sm:h-24 md:w-40 md:h-28 bg-white border border-gray-200 rounded-lg p-2 sm:p-3 md:p-4 shadow-sm hover:shadow-md transition-shadow"
               >
-                <Image
-                  src={brand.logo}
-                  alt={brand.name}
-                  width={80}
-                  height={40}
-                  className="h-5 sm:h-6 md:h-7 w-auto object-contain"
-                />
+                <div className="relative w-full h-full">
+                  <Image
+                    src={brand.logo}
+                    alt={brand.name}
+                    fill
+                    className="object-contain"
+                    sizes="(max-width: 640px) 128px, (max-width: 768px) 144px, 160px"
+                  />
+                </div>
               </div>
             ))}
           </div>

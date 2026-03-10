@@ -14,7 +14,7 @@ const openBookAppointment = (serviceName) => {
 
 const services = [
   {
-    title: "Hair",
+    title: "HAIR",
     description:
       "I was impressed by the molding services, not lorem ipsum is simply free text.",
     image: "/l3.png",
@@ -22,15 +22,15 @@ const services = [
     href: "/services", // Hair services page
   },
   {
-    title: "Skin",
+    title: "SKIN",
     description:
       "I was impressed by the molding services, not lorem ipsum is simply free text.",
     image: "/l1.png",
     icon: "/m1.png",
-    href: "/new-service", // Skincare / facials page
+    href: "/facial", // Skin / facials page
   },
   {
-    title: "Nail",
+    title: "NAIL",
     description:
       "I was impressed by the molding services, not lorem ipsum is simply free text.",
     image: "/l4.png",
@@ -43,23 +43,23 @@ const services = [
       "I was impressed by the molding services, not lorem ipsum is simply free text.",
     image: "/l2.png",
     icon: "/m2.png",
-    href: "/new-service", // Beauty treatments page
+    href: "/spa", // Body therapy / spa page
   },
   {
-    title: "Spa",
+    title: "LASHES",
     description:
       "I was impressed by the molding services, not lorem ipsum is simply free text.",
     image: "/l1.png",
     icon: "/m1.png",
-    href: "/spa", // Spa page
+    href: "/lashes", // Lashes page
   },
   {
-    title: "Massages",
+    title: "MAKEUP",
     description:
       "I was impressed by the molding services, not lorem ipsum is simply free text.",
     image: "/l2.png",
     icon: "/m2.png",
-    href: "/spa", // Massages within spa page
+    href: "/bridal", // Makeup / bridal page
   },
 ];
 

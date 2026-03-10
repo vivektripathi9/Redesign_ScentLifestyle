@@ -78,10 +78,10 @@ export default function Home() {
       <main className="flex w-full flex-1 flex-col gap-0 py-0">
         <StatementSection />
         <LooksSection />
+        <MembershipsSection />
         <BlackStats />
         <WelcomeSection />
         <BeautyVideoHero />
-        <MembershipsSection />
         <TrustedBy />
         <FindNearest />
         <WhyScent />

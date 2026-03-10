@@ -38,7 +38,7 @@ const services = [
     href: "/nails", // Nails page
   },
   {
-    title: "Beauty",
+    title: "Body therapy",
     description:
       "I was impressed by the molding services, not lorem ipsum is simply free text.",
     image: "/l2.png",

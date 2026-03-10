@@ -14,12 +14,12 @@ const menuItems = [
 ];
 
 const services = [
-  { name: "Hair Services", href: "/services" },
-  { name: "Beauty Treatments", href: "/beauty-essentials" },
-  { name: "Nail Services", href: "/nails" },
-  { name: "Skincare", href: "/new-service" },
-  { name: "Makeup", href: "/bridal" },
-  { name: "Massage Therapy", href: "/spa" },
+  { name: "HAIR", href: "/services" },
+  { name: "SKIN", href: "/facial" },
+  { name: "NAIL", href: "/nails" },
+  { name: "Body therapy", href: "/spa" },
+  { name: "LASHES", href: "/lashes" },
+  { name: "MAKEUP", href: "/bridal" },
 ];
 
 const franchiseItems = [
@@ -230,12 +230,12 @@ export default function Navbar() {
 
   // Search functionality
   const searchItems = [
-    { name: "Hair Services", href: "/services", category: "Service" },
-    { name: "Beauty Treatments", href: "/beauty-essentials", category: "Service" },
-    { name: "Nail Services", href: "/nails", category: "Service" },
-    { name: "Skincare", href: "/new-service", category: "Service" },
-    { name: "Makeup", href: "/bridal", category: "Service" },
-    { name: "Massage Therapy", href: "/spa", category: "Service" },
+    { name: "HAIR", href: "/services", category: "Service" },
+    { name: "SKIN", href: "/facial", category: "Service" },
+    { name: "NAIL", href: "/nails", category: "Service" },
+    { name: "Body therapy", href: "/spa", category: "Service" },
+    { name: "LASHES", href: "/lashes", category: "Service" },
+    { name: "MAKEUP", href: "/bridal", category: "Service" },
     { name: "Memberships", href: "/salon-memberships", category: "Page" },
     { name: "Franchise", href: "/franchise", category: "Page" },
     { name: "Academy", href: "/academy", category: "Page" },
@@ -369,10 +369,31 @@ export default function Navbar() {
                     clearTimeout(closeTimeout);
                     setCloseTimeout(null);
                   }
-                  if (item === "Services") setIsServiceOpen(true);
-                  if (item === "Franchise") setIsFranchiseOpen(true);
-                  if (item === "Shops") setIsShopOpen(true);
-                  if (item === "Contact") setIsContactOpen(true);
+                  // Open the current dropdown and close others for smooth behavior
+                  if (item === "Services") {
+                    setIsServiceOpen(true);
+                    setIsFranchiseOpen(false);
+                    setIsShopOpen(false);
+                    setIsContactOpen(false);
+                  }
+                  if (item === "Franchise") {
+                    setIsFranchiseOpen(true);
+                    setIsServiceOpen(false);
+                    setIsShopOpen(false);
+                    setIsContactOpen(false);
+                  }
+                  if (item === "Shops") {
+                    setIsShopOpen(true);
+                    setIsServiceOpen(false);
+                    setIsFranchiseOpen(false);
+                    setIsContactOpen(false);
+                  }
+                  if (item === "Contact") {
+                    setIsContactOpen(true);
+                    setIsServiceOpen(false);
+                    setIsFranchiseOpen(false);
+                    setIsShopOpen(false);
+                  }
                 }}
                 onMouseLeave={() => {
                   // Add a small delay before closing to allow smooth navigation
@@ -432,10 +453,9 @@ export default function Navbar() {
                     <div 
                       className="absolute left-0 top-full z-50 h-2 w-56"
                       onMouseEnter={() => setIsServiceOpen(true)}
-                      onMouseLeave={() => setIsServiceOpen(false)}
                     />
                     <div 
-                      className="service-dropdown absolute left-0 top-full z-50 mt-2 w-56 bg-white border border-gray-200 shadow-lg rounded-sm py-3"
+                      className="service-dropdown absolute left-0 top-full z-50 mt-2 w-56 bg-white border border-gray-200 shadow-lg rounded-sm py-3 transition-opacity duration-200 ease-out"
                       onMouseEnter={() => {
                         if (closeTimeout) {
                           clearTimeout(closeTimeout);
@@ -444,7 +464,7 @@ export default function Navbar() {
                         setIsServiceOpen(true);
                       }}
                       onMouseLeave={() => {
-                        const timeout = setTimeout(() => setIsServiceOpen(false), 150);
+                        const timeout = setTimeout(() => setIsServiceOpen(false), 220);
                         setCloseTimeout(timeout);
                       }}
                     >
@@ -467,10 +487,9 @@ export default function Navbar() {
                     <div 
                       className="absolute left-0 top-full z-50 h-2 w-64"
                       onMouseEnter={() => setIsFranchiseOpen(true)}
-                      onMouseLeave={() => setIsFranchiseOpen(false)}
                     />
                     <div 
-                      className="franchise-dropdown absolute left-0 top-full z-50 mt-2 w-64 bg-white border border-gray-200 shadow-lg rounded-sm py-2"
+                      className="franchise-dropdown absolute left-0 top-full z-50 mt-2 w-64 bg-white border border-gray-200 shadow-lg rounded-sm py-2 transition-opacity duration-200 ease-out"
                       onMouseEnter={() => {
                         if (closeTimeout) {
                           clearTimeout(closeTimeout);
@@ -479,7 +498,7 @@ export default function Navbar() {
                         setIsFranchiseOpen(true);
                       }}
                       onMouseLeave={() => {
-                        const timeout = setTimeout(() => setIsFranchiseOpen(false), 150);
+                        const timeout = setTimeout(() => setIsFranchiseOpen(false), 220);
                         setCloseTimeout(timeout);
                       }}
                     >
@@ -512,10 +531,9 @@ export default function Navbar() {
                     <div 
                       className="absolute left-0 top-full z-50 h-2 w-72"
                       onMouseEnter={() => setIsShopOpen(true)}
-                      onMouseLeave={() => setIsShopOpen(false)}
                     />
                     <div 
-                      className="shop-dropdown absolute left-0 top-full z-50 mt-2 w-72 bg-white border border-gray-200 shadow-lg rounded-sm py-2"
+                      className="shop-dropdown absolute left-0 top-full z-50 mt-2 w-72 bg-white border border-gray-200 shadow-lg rounded-sm py-2 transition-opacity duration-200 ease-out"
                       onMouseEnter={() => {
                         if (closeTimeout) {
                           clearTimeout(closeTimeout);
@@ -524,7 +542,7 @@ export default function Navbar() {
                         setIsShopOpen(true);
                       }}
                       onMouseLeave={() => {
-                        const timeout = setTimeout(() => setIsShopOpen(false), 150);
+                        const timeout = setTimeout(() => setIsShopOpen(false), 220);
                         setCloseTimeout(timeout);
                       }}
                     >
@@ -559,10 +577,9 @@ export default function Navbar() {
                     <div 
                       className="absolute right-0 top-full z-50 h-2 w-72"
                       onMouseEnter={() => setIsContactOpen(true)}
-                      onMouseLeave={() => setIsContactOpen(false)}
                     />
                     <div 
-                      className="contact-dropdown absolute right-0 top-full z-50 mt-2 w-72 bg-white border border-gray-200 shadow-lg rounded-sm py-2"
+                      className="contact-dropdown absolute right-0 top-full z-50 mt-2 w-72 bg-white border border-gray-200 shadow-lg rounded-sm py-2 transition-opacity duration-200 ease-out"
                       onMouseEnter={() => {
                         if (closeTimeout) {
                           clearTimeout(closeTimeout);
@@ -571,7 +588,7 @@ export default function Navbar() {
                         setIsContactOpen(true);
                       }}
                       onMouseLeave={() => {
-                        const timeout = setTimeout(() => setIsContactOpen(false), 150);
+                        const timeout = setTimeout(() => setIsContactOpen(false), 220);
                         setCloseTimeout(timeout);
                       }}
                     >

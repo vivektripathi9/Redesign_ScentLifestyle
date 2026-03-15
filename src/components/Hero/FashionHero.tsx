@@ -22,11 +22,18 @@ export default function FashionHero() {
 
       {/* Hero Content */}
       <div className="absolute inset-0 flex flex-col items-center justify-center z-10 px-4">
-        {/* Hero Text */}
-        <div className="text-center mb-8 sm:mb-12 md:mb-16">
-          <h1 className="heading text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light tracking-[0.05em]" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300, textTransform: 'none' }}>
-            SCENT – where haircut is just an excuse…
-          </h1>
+        {/* Moving Hero Text */}
+        <div className="w-full max-w-5xl mb-6 sm:mb-8 md:mb-10 overflow-hidden">
+          <div className="relative">
+            <div
+              className="flex whitespace-nowrap animate-hero-marquee text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light tracking-[0.12em]"
+              style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300, textTransform: "none" }}
+            >
+              <span className="mx-6">SCENT – where haircut is just an excuse…</span>
+              <span className="mx-6">SCENT – where haircut is just an excuse…</span>
+              <span className="mx-6">SCENT – where haircut is just an excuse…</span>
+            </div>
+          </div>
         </div>
         
         {/* Button */}
@@ -39,6 +46,21 @@ export default function FashionHero() {
           </button>
         </div>
       </div>
+
+      <style jsx>{`
+        @keyframes hero-marquee {
+          from {
+            transform: translateX(0);
+          }
+          to {
+            transform: translateX(-50%);
+          }
+        }
+
+        .animate-hero-marquee {
+          animation: hero-marquee 18s linear infinite;
+        }
+      `}</style>
     </section>
   );
 }

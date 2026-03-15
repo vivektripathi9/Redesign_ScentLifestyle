@@ -25,13 +25,12 @@ const bridalPackages = [
       "airbrush finish with playful shimmer, grip-proof lashes, and dance-proof hair styling designed for high-energy celebrations.",
     image: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80",
     services: [
-      { name: "Glass-skin prep facial", price: "₹3,500" },
-      { name: "Airbrush base + gleam contour", price: "₹4,500" },
-      { name: "Statement liner + Swarovski accents", price: "₹2,500" },
-      { name: "Textured waves / braided buns", price: "₹3,000" },
-      { name: "On-site stylist for quick fixes", price: "₹5,000" },
+      { name: "Party makeup look", price: "" },
+      { name: "Soft glam hair styling", price: "" },
+      { name: "Lash enhancement", price: "" },
     ],
-    price: "₹18,500",
+    // Party makeup from Menu April 2026
+    price: "₹4,000",
   },
   {
     id: "wedding",
@@ -40,13 +39,12 @@ const bridalPackages = [
       "couture bridal look inspired by your lehenga palette, jewellery, and ceremony lighting. Includes veil setting and tear-resistant touch-ups.",
     image: "/br1.jpg",
     services: [
-      { name: "Luxury skin therapy + cryo depuff", price: "₹5,500" },
-      { name: "Custom mix foundation & HD base", price: "₹6,500" },
-      { name: "Veil-ready updo or classic bun", price: "₹4,500" },
-      { name: "Jewellery + dupatta draping", price: "₹3,500" },
-      { name: "Unlimited touch-ups till vidaai", price: "₹9,900" },
+      { name: "Bridal makeup", price: "" },
+      { name: "Hair styling & draping", price: "" },
+      { name: "Pre-bridal skin prep", price: "" },
     ],
-    price: "₹29,900",
+    // Bridal makeup from Menu April 2026
+    price: "₹17,000",
   },
   {
     id: "reception",
@@ -55,13 +53,11 @@ const bridalPackages = [
       "modern glam inspired by celebrity after-party looks—think glass eyeliner, glossy lips, and sleek blowouts.",
     image: "/br2.jpg",
     services: [
-      { name: "Radiance revive facial shot", price: "₹3,500" },
-      { name: "Soft smokey / monochrome eye", price: "₹4,000" },
-      { name: "Glossed lip + precision contour", price: "₹2,500" },
-      { name: "Hollywood blowout / ponytail", price: "₹3,500" },
-      { name: "Custom fragrance layering", price: "₹8,000" },
+      { name: "Engagement / reception makeup", price: "" },
+      { name: "Statement eye & hair styling", price: "" },
     ],
-    price: "₹21,500",
+    // Engagement / reception from Menu April 2026
+    price: "₹11,000",
   },
 ];
 

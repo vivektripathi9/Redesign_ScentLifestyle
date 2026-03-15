@@ -97,7 +97,7 @@ export default function LooksSection() {
                   {/* Image placeholder - upload images later */}
                 </div>
                 <div
-                  className={`absolute -bottom-4 sm:-bottom-5 left-1/2 h-12 w-12 sm:h-16 sm:w-16 -translate-x-1/2 overflow-hidden rounded-full shadow-lg ${
+                  className={`hidden absolute -bottom-4 sm:-bottom-5 left-1/2 h-12 w-12 sm:h-16 sm:w-16 -translate-x-1/2 overflow-hidden rounded-full shadow-lg ${
                     service.icon === "/m1.png" || service.icon === "/m2.png"
                       ? "bg-white"
                       : "bg-black"

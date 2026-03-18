@@ -183,7 +183,7 @@ export default function FacialExperience() {
                 className={`grid gap-8 md:gap-12 md:grid-cols-2 md:items-center ${idx % 2 === 1 ? 'md:flex-row-reverse' : ''}`}
                 style={{ animation: `fadeInUp 0.8s ease-out ${idx * 0.2}s both` }}
               >
-                <div className={`relative h-96 overflow-hidden rounded-3xl ${idx % 2 === 1 ? 'md:order-2' : ''}`}>
+                <div className={`relative h-72 sm:h-80 md:h-96 overflow-hidden rounded-3xl ${idx % 2 === 1 ? 'md:order-2' : ''}`}>
                   <Image
                     src={service.image}
                     alt={service.title}
@@ -211,27 +211,27 @@ export default function FacialExperience() {
                       </div>
                     ))}
                   </div>
-                  <div className="flex flex-col sm:flex-row gap-4 pt-2">
+                  <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2">
                     <button
                       onClick={() => {
                         setSelectedService(service);
                         setIsModalOpen(true);
                       }}
-                      className="flex-1 rounded-full border-2 border-gray-300 px-8 py-4 text-base font-semibold text-[#1f1f2e] transition-all duration-300 hover:border-pink-400 hover:text-pink-600"
+                      className="flex-1 rounded-full border-2 border-gray-300 px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold text-[#1f1f2e] transition-all duration-300 hover:border-pink-400 hover:text-pink-600"
                     >
                       Learn more
                     </button>
-                    <button
-                      onClick={() => {
-                        if (typeof window !== "undefined") {
-                          const event = new CustomEvent("openBookAppointment", { detail: { service: service.title } });
-                          window.dispatchEvent(event);
-                        }
-                      }}
-                      className="flex-1 rounded-full bg-gradient-to-r from-pink-600 via-rose-500 to-pink-600 px-8 py-4 text-base font-semibold text-white shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-105"
-                    >
+                  <button
+                    onClick={() => {
+                      if (typeof window !== "undefined") {
+                        const event = new CustomEvent("openBookAppointment", { detail: { service: service.title } });
+                        window.dispatchEvent(event);
+                      }
+                    }}
+                      className="flex-1 rounded-full bg-gradient-to-r from-pink-600 via-rose-500 to-pink-600 px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold text-white shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-105"
+                  >
                       Book my treatment
-                    </button>
+                  </button>
                   </div>
                 </div>
               </div>

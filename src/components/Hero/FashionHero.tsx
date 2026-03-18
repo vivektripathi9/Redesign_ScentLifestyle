@@ -26,7 +26,7 @@ export default function FashionHero() {
         <div className="w-full mb-6 sm:mb-8 md:mb-10 overflow-hidden">
           <div className="relative">
             <div
-              className="hero-marquee-track flex whitespace-nowrap text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light tracking-[0.12em]"
+              className="hero-marquee-track flex whitespace-nowrap text-white text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light tracking-[0.08em] sm:tracking-[0.12em]"
               style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300, textTransform: "none" }}
             >
               {/* Track A */}

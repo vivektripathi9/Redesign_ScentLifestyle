@@ -37,7 +37,7 @@ export default function TrustedBy() {
             {duplicatedBrands.map((brand, index) => (
               <div
                 key={`${brand.name}-${index}`}
-                className="flex items-center justify-center flex-shrink-0 w-32 h-20 sm:w-36 sm:h-24 md:w-40 md:h-28 bg-white border border-gray-200 rounded-lg p-2 sm:p-3 md:p-4 shadow-sm hover:shadow-md transition-shadow"
+                className="flex items-center justify-center flex-shrink-0 w-28 h-16 sm:w-36 sm:h-24 md:w-40 md:h-28 bg-white border border-gray-200 rounded-lg p-2 sm:p-3 md:p-4 shadow-sm hover:shadow-md transition-shadow"
               >
                 <div className="relative w-full h-full">
                   <Image
@@ -63,7 +63,7 @@ export default function TrustedBy() {
             }
           }
           .animate-scroll {
-            animation: scroll 12s linear infinite;
+            animation: scroll 18s linear infinite;
             width: fit-content;
             display: flex;
           }

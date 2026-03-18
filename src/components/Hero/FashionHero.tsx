@@ -23,15 +23,26 @@ export default function FashionHero() {
       {/* Hero Content */}
       <div className="absolute inset-0 flex flex-col items-center justify-center z-10 px-4">
         {/* Moving Hero Text */}
-        <div className="w-full max-w-5xl mb-6 sm:mb-8 md:mb-10 overflow-hidden">
+        <div className="w-full mb-6 sm:mb-8 md:mb-10 overflow-hidden">
           <div className="relative">
             <div
-              className="flex whitespace-nowrap animate-hero-marquee text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light tracking-[0.12em]"
+              className="hero-marquee-track flex whitespace-nowrap text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light tracking-[0.12em]"
               style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300, textTransform: "none" }}
             >
-              <span className="mx-6">SCENT – where haircut is just an excuse…</span>
-              <span className="mx-6">SCENT – where haircut is just an excuse…</span>
-              <span className="mx-6">SCENT – where haircut is just an excuse…</span>
+              {/* Track A */}
+              <div className="flex items-center">
+                <span className="mx-6 sm:mx-8 md:mx-10">SCENT – where haircut is just an excuse…</span>
+                <span className="mx-6 sm:mx-8 md:mx-10">SCENT – where haircut is just an excuse…</span>
+                <span className="mx-6 sm:mx-8 md:mx-10">SCENT – where haircut is just an excuse…</span>
+                <span className="mx-6 sm:mx-8 md:mx-10">SCENT – where haircut is just an excuse…</span>
+              </div>
+              {/* Track B (duplicate for seamless loop) */}
+              <div className="flex items-center" aria-hidden="true">
+                <span className="mx-6 sm:mx-8 md:mx-10">SCENT – where haircut is just an excuse…</span>
+                <span className="mx-6 sm:mx-8 md:mx-10">SCENT – where haircut is just an excuse…</span>
+                <span className="mx-6 sm:mx-8 md:mx-10">SCENT – where haircut is just an excuse…</span>
+                <span className="mx-6 sm:mx-8 md:mx-10">SCENT – where haircut is just an excuse…</span>
+              </div>
             </div>
           </div>
         </div>
@@ -49,16 +60,18 @@ export default function FashionHero() {
 
       <style jsx>{`
         @keyframes hero-marquee {
-          from {
+          0% {
             transform: translateX(0);
           }
-          to {
+          100% {
             transform: translateX(-50%);
           }
         }
 
-        .animate-hero-marquee {
-          animation: hero-marquee 18s linear infinite;
+        .hero-marquee-track {
+          width: max-content;
+          animation: hero-marquee 45s linear infinite;
+          will-change: transform;
         }
       `}</style>
     </section>

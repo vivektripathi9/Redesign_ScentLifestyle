@@ -52,6 +52,85 @@ export default function FacialExperience() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const videoRef = useRef(null);
 
+  const priceMenusByServiceId = {
+    waxing: {
+      note: "**GST is applicable",
+      sections: [
+        {
+          title: "Body hair trimming for men",
+          rows: [
+            { name: "Arm", price: "₹450" },
+            { name: "Leg", price: "₹1020" },
+            { name: "Front/back", price: "₹1020" },
+            { name: "Full body", price: "₹3000" },
+          ],
+        },
+        {
+          title: "Roll on wax women",
+          rows: [
+            { name: "Arm", price: "₹950" },
+            { name: "Leg", price: "₹1200" },
+            { name: "¾ leg", price: "₹1020" },
+            { name: "Underarm", price: "₹1200" },
+            { name: "Front/back", price: "₹4500" },
+          ],
+        },
+        {
+          title: "Roll on wax men",
+          rows: [
+            { name: "Arm", price: "₹1020" },
+            { name: "Leg", price: "₹1200" },
+            { name: "¾ leg", price: "₹1100" },
+            { name: "Front/back", price: "₹1250" },
+            { name: "Full body", price: "₹4500" },
+          ],
+        },
+        {
+          title: "Waxing for women",
+          rows: [
+            { name: "Arm", price: "₹800" },
+            { name: "Leg", price: "₹1010" },
+            { name: "¾ leg", price: "₹850" },
+            { name: "Underarm", price: "₹290" },
+            { name: "Front/back", price: "₹1020" },
+            { name: "Full body", price: "₹4000" },
+            { name: "Brazilian", price: "₹2300" },
+            { name: "Bikini line", price: "₹1150" },
+          ],
+        },
+        {
+          title: "Waxing for men",
+          rows: [
+            { name: "Arm", price: "₹900" },
+            { name: "Leg", price: "₹1130" },
+            { name: "¾ leg", price: "₹960" },
+            { name: "Underarm", price: "₹400" },
+            { name: "Front/back", price: "₹1130" },
+            { name: "Full body", price: "₹4500" },
+            { name: "Brazilian", price: "₹2300" },
+            { name: "Bikini line", price: "₹1130" },
+          ],
+        },
+      ],
+    },
+    threading: {
+      note: "**GST is applicable",
+      sections: [
+        {
+          title: "Threading",
+          rows: [
+            { name: "Eyebrows", price: "₹120" },
+            { name: "Upperlip", price: "₹60" },
+            { name: "Chin", price: "₹60" },
+            { name: "Forehead", price: "₹120" },
+            { name: "Sidelocks", price: "₹120" },
+            { name: "Full face", price: "₹380" },
+          ],
+        },
+      ],
+    },
+  };
+
   // Split services into sections
   const mainServices = serviceChapters; // All 3 services
   const secondaryServices = []; // Hide secondary services
@@ -132,17 +211,28 @@ export default function FacialExperience() {
                       </div>
                     ))}
                   </div>
-                  <button
-                    onClick={() => {
-                      if (typeof window !== "undefined") {
-                        const event = new CustomEvent("openBookAppointment", { detail: { service: service.title } });
-                        window.dispatchEvent(event);
-                      }
-                    }}
-                    className="rounded-full bg-gradient-to-r from-pink-600 via-rose-500 to-pink-600 px-8 py-4 text-base font-semibold text-white shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-105"
-                  >
-                    Book This Treatment
-                  </button>
+                  <div className="flex flex-col sm:flex-row gap-4 pt-2">
+                    <button
+                      onClick={() => {
+                        setSelectedService(service);
+                        setIsModalOpen(true);
+                      }}
+                      className="flex-1 rounded-full border-2 border-gray-300 px-8 py-4 text-base font-semibold text-[#1f1f2e] transition-all duration-300 hover:border-pink-400 hover:text-pink-600"
+                    >
+                      Learn more
+                    </button>
+                    <button
+                      onClick={() => {
+                        if (typeof window !== "undefined") {
+                          const event = new CustomEvent("openBookAppointment", { detail: { service: service.title } });
+                          window.dispatchEvent(event);
+                        }
+                      }}
+                      className="flex-1 rounded-full bg-gradient-to-r from-pink-600 via-rose-500 to-pink-600 px-8 py-4 text-base font-semibold text-white shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-105"
+                    >
+                      Book my treatment
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}
@@ -425,28 +515,77 @@ export default function FacialExperience() {
 
               {/* Details Section */}
               <div className="p-8 md:p-12">
-                <div className="mb-8">
-                  <h3 className="text-2xl font-semibold text-[#1f1f2e] mb-4" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
-                    About This Treatment
-                  </h3>
-                  <p className="text-base leading-relaxed text-[#555]">
-                    {selectedService.description}
-                  </p>
-                </div>
+                {priceMenusByServiceId[selectedService.id] ? (
+                  <div className="mb-10">
+                    <div className="flex items-baseline justify-between gap-6 flex-wrap">
+                      <h3
+                        className="text-2xl font-semibold text-[#1f1f2e] mb-2"
+                        style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}
+                      >
+                        Price list
+                      </h3>
+                      <p className="text-sm text-[#777] font-light">
+                        {priceMenusByServiceId[selectedService.id].note}
+                      </p>
+                    </div>
 
-                <div className="mb-8">
-                  <h3 className="text-2xl font-semibold text-[#1f1f2e] mb-6" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
-                    What's Included
-                  </h3>
-                  <div className="grid gap-4 md:grid-cols-2">
-                    {selectedService.services.map((service, i) => (
-                      <div key={i} className="flex items-start gap-3 p-4 rounded-2xl bg-gradient-to-br from-[#fef9fb] to-white border border-pink-100">
-                        <span className="text-pink-400 text-2xl leading-none mt-1">❀</span>
-                        <span className="text-base text-[#444] font-medium">{service}</span>
-                      </div>
-                    ))}
+                    <div className="mt-6 grid gap-5 md:grid-cols-2">
+                      {priceMenusByServiceId[selectedService.id].sections.map((sec) => (
+                        <div
+                          key={sec.title}
+                          className="rounded-3xl border border-gray-200/70 bg-white p-5 shadow-[0px_18px_60px_rgba(0,0,0,0.06)]"
+                        >
+                          <p
+                            className="text-xs sm:text-sm font-semibold tracking-[0.32em] text-[#1f1f2e] uppercase mb-3"
+                            style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif' }}
+                          >
+                            {sec.title}
+                          </p>
+                          <div className="space-y-2">
+                            {sec.rows.map((row) => (
+                              <div
+                                key={`${sec.title}-${row.name}`}
+                                className="flex items-start justify-between gap-6 border-b border-gray-100/80 pb-2 last:border-b-0 last:pb-0"
+                              >
+                                <p className="text-sm sm:text-base text-[#2a2a35] font-light leading-relaxed">
+                                  {row.name}
+                                </p>
+                                <p className="text-sm sm:text-base text-[#111] font-medium whitespace-nowrap">
+                                  {row.price}
+                                </p>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                </div>
+                ) : (
+                  <>
+                    <div className="mb-8">
+                      <h3 className="text-2xl font-semibold text-[#1f1f2e] mb-4" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
+                        About This Treatment
+                      </h3>
+                      <p className="text-base leading-relaxed text-[#555]">
+                        {selectedService.description}
+                      </p>
+                    </div>
+
+                    <div className="mb-8">
+                      <h3 className="text-2xl font-semibold text-[#1f1f2e] mb-6" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
+                        What's Included
+                      </h3>
+                      <div className="grid gap-4 md:grid-cols-2">
+                        {selectedService.services.map((service, i) => (
+                          <div key={i} className="flex items-start gap-3 p-4 rounded-2xl bg-gradient-to-br from-[#fef9fb] to-white border border-pink-100">
+                            <span className="text-pink-400 text-2xl leading-none mt-1">❀</span>
+                            <span className="text-base text-[#444] font-medium">{service}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </>
+                )}
 
                 <div className="flex flex-col sm:flex-row gap-4">
                   <button

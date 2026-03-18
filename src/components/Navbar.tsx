@@ -276,7 +276,7 @@ export default function Navbar() {
           <div className="w-16 sm:w-20 md:w-24"></div>
           
           {/* Centered Logo */}
-              <a
+          <a
             href="/" 
             className="flex-1 flex justify-center items-center group"
           >
@@ -398,10 +398,10 @@ export default function Navbar() {
                 onMouseLeave={() => {
                   // Add a small delay before closing to allow smooth navigation
                   const timeout = setTimeout(() => {
-                    if (item === "Services") setIsServiceOpen(false);
-                    if (item === "Franchise") setIsFranchiseOpen(false);
-                    if (item === "Shops") setIsShopOpen(false);
-                    if (item === "Contact") setIsContactOpen(false);
+                  if (item === "Services") setIsServiceOpen(false);
+                  if (item === "Franchise") setIsFranchiseOpen(false);
+                  if (item === "Shops") setIsShopOpen(false);
+                  if (item === "Contact") setIsContactOpen(false);
                   }, 150);
                   setCloseTimeout(timeout);
                 }}

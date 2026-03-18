@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 
 const WhyScent = dynamic(() => import("../why/why"), { ssr: true });
@@ -16,24 +16,14 @@ const nailVideos = [
   { id: "FTCoQQGPcNo", title: "Nail Video 5" },
 ];
 
-const serviceChapters = [
-  {
-    id: "manicure-pedicure",
-    title: "Manicure & Pedicure",
-    tagline: "Classic & organic manicures and pedicures finished with candle spa therapy.",
-    description:
-      "hydrating scrubs, mask wraps, hot towel compressions, and vitamin-rich oils ensure your hands and feet stay plush. Upgrade to our candle spa manicure and pedicure for molten-wax massages.",
-    image: "https://images.unsplash.com/photo-1500835556837-99ac94a94552?auto=format&fit=crop&w=1200&q=80",
-    services: ["Classic manicure", "Organic manicure", "Candle spa manicure", "Classic pedicure", "Organic pedicure", "Candle spa pedicure"],
-  },
-];
-
 const galleryItems = [
   {
-    title: "Classic Manicure",
+    title: "Manicure",
     image: "/w5.jpg",
     description: "a timeless manicure experience with nail shaping, cuticle care, hand massage, and polish application. Perfect for maintaining healthy, beautiful nails.",
     duration: "45 minutes",
+    price: "₹600",
+    tagline: "Clean shaping, cuticle care, and a polished finish.",
     benefits: [
       "Nail health maintenance",
       "Hand relaxation",
@@ -44,10 +34,12 @@ const galleryItems = [
     includes: ["Nail shaping", "Cuticle care", "Hand massage", "Polish application", "Moisturizing"],
   },
   {
-    title: "Classic Pedicure",
+    title: "Pedicure",
     image: "/w7.jpg",
-    description: "revitalize your feet with our classic pedicure. Includes foot soak, exfoliation, nail care, and polish application for soft, beautiful feet.",
+    description: "revitalize your feet with our pedicure ritual. Includes foot soak, exfoliation, nail care, and polish application for soft, beautiful feet.",
     duration: "60 minutes",
+    price: "₹800",
+    tagline: "Soak, exfoliation, and expert nail care for softer feet.",
     benefits: [
       "Foot relaxation",
       "Smooth skin",
@@ -60,33 +52,57 @@ const galleryItems = [
 ];
 
 export default function NailCouture() {
-  const containerRefs = useRef([]);
-  const cardRefs = useRef([]);
   const [selectedItem, setSelectedItem] = useState(null);
+  const [modalView, setModalView] = useState("prices"); // "details" | "prices"
+  const videoRef = useRef(null);
 
-  const handleScroll = (groupIdx, direction) => {
-    const container = containerRefs.current[groupIdx];
-    const card = cardRefs.current[groupIdx];
-    if (!container || !card) return;
-
-    const gapWidth = 24; // gap-6 = 1.5rem = 24px
-    const cardWidth = card.offsetWidth + gapWidth;
-    const target =
-      container.scrollLeft + (direction === "right" ? cardWidth : -cardWidth);
-
-    container.scrollTo({
-      left: target,
-      behavior: "smooth",
-    });
-  };
-
-  const groups = [
+  const manicurePedicurePriceSections = [
     {
-      title: "Manicure & Pedicure",
-      description: "Classic and organic manicure and pedicure services for beautiful hands and feet.",
-      items: galleryItems,
+      title: "Manicure / pedicure",
+      items: [
+        { name: "Manicure / pedicure", price: "₹600 / ₹800" },
+        { name: "Organic manicure / pedicure", price: "₹800 / ₹1000" },
+        { name: "Kids manicure", price: "₹400" },
+        { name: "Kids pedicure", price: "₹450" },
+        { name: "Coffee manicure / pedicure", price: "₹900 / ₹1200" },
+        { name: "Candle spa manicure / pedicure", price: "₹1700 / ₹1700" },
+      ],
+    },
+    {
+      title: "Foot facials",
+      items: [
+        { name: "Hydra foot facial", price: "₹2300" },
+        { name: "Glyco foot facial", price: "₹2800" },
+      ],
+    },
+    {
+      title: "Add-ons",
+      items: [
+        { name: "Cut & file", price: "₹350" },
+        { name: "Colour change", price: "₹350" },
+        { name: "Geleration", price: "₹850" },
+        { name: "French geleration", price: "₹1200" },
+        { name: "Gel nail art (per finger)", price: "₹200*" },
+        { name: "3d & 4d nail art (per finger)", price: "₹250*" },
+      ],
+    },
+    {
+      title: "Gel polish & extensions",
+      items: [
+        { name: "Chrome gel polish", price: "₹1400" },
+        { name: "Ombre gel polish", price: "₹1700" },
+        { name: "Nail extention", price: "₹2800" },
+        { name: "Nail extention infill", price: "₹1800" },
+        { name: "Over lay", price: "₹1800" },
+      ],
     },
   ];
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch(() => {});
+    }
+  }, []);
 
   return (
     <>
@@ -110,91 +126,113 @@ export default function NailCouture() {
           }
         }
       `}</style>
-      <section id="nail-couture" className="bg-gradient-to-b from-[#fff7fb] via-white to-white">
-      {/* Full-width hero */}
-      <div className="relative w-full overflow-hidden">
+      <div className="flex min-h-screen flex-col bg-white">
+        {/* 1. Hero Banner - Video */}
+        <section className="relative h-[70vh] md:h-[85vh] overflow-hidden">
+          <div className="absolute inset-0">
         <video
+              ref={videoRef}
           src="/nail_vi.mp4"
+              className="h-full w-full object-cover"
           autoPlay
+              loop
           muted
-          loop
           playsInline
-          className="h-[60vh] min-h-[420px] w-full object-cover"
         />
       </div>
+        </section>
 
-      <div className="mx-auto flex w-full flex-col gap-12 px-6 py-16 md:px-12 lg:px-20">
-        {/* Highlight */}
-        <div className="w-full rounded-[24px] border border-gray-100 bg-white px-6 sm:px-8 py-6 sm:py-7 text-center shadow-[0px_20px_60px_rgba(0,0,0,0.04)]">
-          <div className="mx-auto flex max-w-4xl flex-col gap-4 sm:gap-5">
-            <p className="text-xs sm:text-sm font-light tracking-[0.3em] text-[#C06C84]" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300, textTransform: 'none' }}>
-              Bangalore Nail Flagship Menu
-            </p>
-            <h3
-              className="text-xl sm:text-2xl md:text-[26px] font-light text-[#1f1f2e] leading-relaxed tracking-[0.05em]"
+        {/* 2. Main Service Sections (Facial-style layout) */}
+        <section className="bg-white py-20 md:py-28">
+          <div className="mx-auto w-full max-w-7xl px-6 md:px-12">
+            <div className="mb-16 text-center px-4 sm:px-6">
+              <p
+                className="mb-4 sm:mb-6 inline-flex items-center gap-2 text-xs font-light tracking-[0.3em] text-pink-400"
+                style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300, textTransform: "none" }}
+              >
+                <span className="text-pink-500 text-lg sm:text-xl">❀</span> Premium Services
+              </p>
+              <h2
+                className="mb-4 sm:mb-6 text-2xl sm:text-3xl md:text-4xl font-light text-[#1f1f2e] leading-relaxed tracking-[0.05em]"
+                style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300, textTransform: "none" }}
+              >
+                Nail
+              </h2>
+              <p
+                className="mx-auto max-w-2xl text-sm sm:text-base text-[#6f6f7a] font-light px-2"
               style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}
             >
-              Manicure & Pedicure services for beautiful hands and feet.
-            </h3>
-            <p className="text-sm sm:text-base leading-relaxed text-[#555] font-light max-w-2xl mx-auto" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
-              Choose between classic and organic manicure and pedicure services. Each experience is powered by med-grade hygiene and artists trained to sculpt perfection.
-            </p>
-          </div>
+                Manicure and pedicure rituals designed for clean elegance and long-lasting comfort
+              </p>
         </div>
 
-        {/* Gallery groups */}
-        {groups.map((group, groupIdx) => (
-          <div key={group.title} className="space-y-6 rounded-[36px] border border-white/70 bg-white/70 p-6 shadow-[0px_30px_120px_rgba(0,0,0,0.08)]">
-            <div className="text-center lg:text-left">
-              <p className="text-base font-semibold uppercase tracking-[0.5em] text-black">
-                {group.title}
-              </p>
-              <p className="text-lg font-medium text-[#444]">{group.description}</p>
-            </div>
-            <div className="mt-6">
-              <div className="grid gap-6 sm:gap-8 md:grid-cols-2 justify-items-center">
-                {group.items.map((item, idx) => (
-                  <div
-                    key={item.title}
-                    className="w-full max-w-[360px]"
-                    style={{
-                      animationDelay: `${(groupIdx * 7 + idx) * 60}ms`,
-                      animation: "fadeInUp 0.6s ease forwards",
-                    }}
-                  >
-                    <div
-                      ref={(el) => {
-                        if (idx === 0) {
-                          cardRefs.current[groupIdx] = el;
-                        }
-                      }}
-                      className="group relative rounded-2xl border border-gray-200/50 bg-white shadow-md transition-all duration-300 ease-out hover:z-20 hover:shadow-[0_30px_80px_rgba(0,0,0,0.2)] hover:scale-105 cursor-pointer"
-                      style={{ willChange: "transform" }}
-                      onClick={() => setSelectedItem(item)}
-                    >
-                      <div className="relative h-64 w-full overflow-hidden rounded-t-2xl">
+            <div className="space-y-16 md:space-y-20">
+              {galleryItems.map((service, idx) => (
+                <div
+                  key={service.title}
+                  className={`grid gap-8 md:gap-12 md:grid-cols-2 md:items-center ${idx % 2 === 1 ? "md:flex-row-reverse" : ""}`}
+                  style={{ animation: `fadeInUp 0.8s ease-out ${idx * 0.2}s both` }}
+                >
+                  <div className={`relative h-96 overflow-hidden rounded-3xl ${idx % 2 === 1 ? "md:order-2" : ""}`}>
                         <Image
-                          src={item.image}
-                          alt={item.title}
+                      src={service.image}
+                      alt={service.title}
                           fill
-                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                          className="object-cover transition-transform duration-500 group-hover:scale-105"
-                          style={{ willChange: "transform" }}
+                      className="object-cover transition-transform duration-700 hover:scale-110"
                         />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                       </div>
-                      <div className="flex items-center justify-between px-5 py-4">
-                        <p className="text-sm font-semibold text-[#1f1f2e]">{item.title}</p>
-                        <span className="text-xl text-black transition-transform duration-300 group-hover:translate-x-1">
-                          →
-                        </span>
+
+                  <div className={`space-y-6 ${idx % 2 === 1 ? "md:order-1" : ""}`}>
+                    <div>
+                      <div className="mb-3 inline-flex items-center gap-2 rounded-full bg-pink-100 px-4 py-1.5 text-xs font-semibold text-pink-600">
+                        <span>✨</span> Premium Treatment
                       </div>
+                      <h3 className="mb-3 text-3xl font-semibold text-[#1f1f2e] md:text-4xl" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
+                        {service.title}
+                      </h3>
+                      <p className="text-lg text-gray-500">{service.tagline}</p>
                     </div>
+
+                    <p className="text-base leading-relaxed text-[#555] md:text-lg">{service.description}</p>
+
+                    <div className="grid gap-3">
+                      {service.includes.slice(0, 4).map((item) => (
+                        <div key={item} className="flex items-center gap-3">
+                          <span className="text-pink-400 text-xl">❀</span>
+                          <span className="text-base text-[#444]">{item}</span>
                   </div>
                 ))}
               </div>
+
+                    <div className="flex flex-col sm:flex-row gap-4 pt-2">
+                  <button
+                        onClick={() => {
+                          setModalView("prices");
+                          setSelectedItem(service);
+                        }}
+                        className="flex-1 rounded-full border-2 border-gray-300 px-8 py-4 text-base font-semibold text-[#1f1f2e] transition-all duration-300 hover:border-pink-400 hover:text-pink-600"
+                      >
+                        Learn more
+                  </button>
+                  <button
+                        onClick={() => {
+                          if (typeof window !== "undefined") {
+                            const event = new CustomEvent("openBookAppointment", { detail: { service: service.title } });
+                            window.dispatchEvent(event);
+                          }
+                        }}
+                        className="flex-1 rounded-full bg-gradient-to-r from-pink-600 via-rose-500 to-pink-600 px-8 py-4 text-base font-semibold text-white shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-105"
+                      >
+                        Book my treatment
+                  </button>
+                    </div>
             </div>
           </div>
         ))}
+            </div>
+          </div>
+        </section>
 
         {/* Service Detail Modal */}
         {selectedItem && (
@@ -229,12 +267,67 @@ export default function NailCouture() {
                   <h2 className="text-3xl md:text-4xl font-semibold text-white mb-2" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
                     {selectedItem.title}
                   </h2>
+                  {selectedItem.price ? (
+                    <p className="text-white/95 text-sm md:text-base font-medium mb-1">
+                      {selectedItem.price}
+                    </p>
+                  ) : null}
                   <p className="text-white/90 text-sm md:text-base">{selectedItem.description}</p>
                 </div>
               </div>
 
               {/* Content Section */}
               <div className="p-6 md:p-10 space-y-8">
+                {modalView === "prices" ? (
+                  <div className="space-y-5">
+                    <div className="flex items-baseline justify-between gap-6 flex-wrap">
+                      <h3
+                        className="text-2xl font-semibold text-[#1f1f2e] mb-2"
+                        style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}
+                      >
+                        Price list
+                      </h3>
+                      <p className="text-sm text-[#777] font-light">
+                        *GST is applicable
+                      </p>
+                    </div>
+
+                    <div className="mt-6 grid gap-5 md:grid-cols-2">
+                      {manicurePedicurePriceSections.map((section) => (
+                        <div
+                          key={section.title}
+                          className="rounded-3xl border border-gray-200/70 bg-white p-5 shadow-[0px_18px_60px_rgba(0,0,0,0.06)]"
+                        >
+                          <p
+                            className="text-xs sm:text-sm font-semibold tracking-[0.32em] text-[#1f1f2e] uppercase mb-3"
+                            style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif' }}
+                          >
+                            {section.title}
+                          </p>
+                          <div className="space-y-2">
+                            {section.items.map((row) => (
+                              <div
+                                key={`${section.title}-${row.name}`}
+                                className="flex items-start justify-between gap-6 border-b border-gray-100/80 pb-2 last:border-b-0 last:pb-0"
+                              >
+                                <p className="text-sm sm:text-base text-[#2a2a35] font-light leading-relaxed">
+                                  {row.name}
+                                </p>
+                                <p className="text-sm sm:text-base text-[#111] font-medium whitespace-nowrap">
+                                  {row.price}
+                                </p>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                    <p className="text-xs sm:text-sm text-[#666] font-light" style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}>
+                      * denotes price per finger where mentioned.
+                    </p>
+                  </div>
+                ) : (
+                  <>
                 {/* Duration */}
                 <div className="flex items-center gap-3">
                   <div className="rounded-full bg-[#C06C84]/10 px-4 py-2">
@@ -294,6 +387,8 @@ export default function NailCouture() {
                     Learn More
                   </button>
                 </div>
+                  </>
+                )}
               </div>
             </div>
           </div>
@@ -309,7 +404,6 @@ export default function NailCouture() {
 
         <WhyScent />
       </div>
-    </section>
     </>
   );
 }

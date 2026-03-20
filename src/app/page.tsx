@@ -18,12 +18,12 @@ const BlackStats = dynamic(() => import("@/components/Black/black"), {
   ssr: true,
 });
 
-const LooksSection = dynamic(() => import("@/components/Looks/looks"), {
+const OfferSection = dynamic(() => import("@/components/Offer/offer"), {
   loading: () => null,
   ssr: true,
 });
 
-const WelcomeSection = dynamic(() => import("@/components/Welcome/welcome"), {
+const LooksSection = dynamic(() => import("@/components/Looks/looks"), {
   loading: () => null,
   ssr: true,
 });
@@ -80,7 +80,7 @@ export default function Home() {
         <LooksSection />
         <MembershipsSection />
         <BlackStats />
-        <WelcomeSection />
+        <OfferSection />
         <BeautyVideoHero />
         <TrustedBy />
         <FindNearest />

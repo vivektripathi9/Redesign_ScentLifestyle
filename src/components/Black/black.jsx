@@ -23,6 +23,17 @@ export default function BlackStats() {
   return (
     <section className="bg-black py-8 sm:py-12 md:py-16 text-white">
       <div className="mx-auto flex w-full max-w-5xl flex-col items-center px-4 sm:px-6 md:px-12">
+        <div className="mb-10 sm:mb-12 md:mb-14 text-center">
+          <h2
+            className="text-2xl sm:text-3xl md:text-4xl font-light tracking-[0.04em] text-white"
+            style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}
+          >
+            Confidence, Crafted Beautifully
+          </h2>
+          <p className="mt-4 sm:mt-5 mx-auto max-w-2xl text-sm sm:text-base text-[#D4AF37]">
+            Every visit at Scent is a blend of expert care and elevated experience, designed to help you look polished and feel unstoppable.
+          </p>
+        </div>
         <div className="flex w-full flex-col items-center justify-center gap-4 sm:gap-6 md:gap-8 md:flex-row md:gap-8 lg:gap-12">
           {stats.map((stat, index) => (
             <React.Fragment key={stat.title}>

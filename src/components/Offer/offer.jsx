@@ -125,12 +125,12 @@ export default function OfferSection() {
               key={activeOffer.id}
               className="max-w-3xl text-center transition-all duration-700 ease-out animate-[fadeUp_700ms_ease-out]"
             >
-              {(activeOffer.highlight || activeOffer.tagline) && (
+              {activeOffer.highlight && (
                 <p
                   className="mb-3 inline-flex rounded-full border border-[#E0C15A] bg-[#1a1404]/75 px-3 py-1 text-xs sm:text-sm tracking-[0.14em] uppercase text-[#F2D878] shadow-[0_0_18px_rgba(212,175,55,0.3)]"
                   style={{ fontFamily: activeOffer.bodyFont }}
                 >
-                  {activeOffer.highlight || activeOffer.tagline}
+                  {activeOffer.highlight}
                 </p>
               )}
               <h3

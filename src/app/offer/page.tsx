@@ -113,12 +113,12 @@ export default function OfferPage() {
             <p className="text-sm md:text-base tracking-[0.2em] text-[#D4AF37] uppercase" style={{ fontFamily: activeSlide.bodyFont }}>
               Exclusive Offers
             </p>
-            {(activeSlide.highlight || activeSlide.tagline) && (
+            {activeSlide.highlight && (
               <p
                 className="mt-3 inline-flex rounded-full border border-[#E0C15A] bg-[#1a1404]/75 px-3 py-1 text-xs sm:text-sm tracking-[0.14em] uppercase text-[#F2D878] shadow-[0_0_18px_rgba(212,175,55,0.3)]"
                 style={{ fontFamily: activeSlide.bodyFont }}
               >
-                {activeSlide.highlight || activeSlide.tagline}
+                {activeSlide.highlight}
               </p>
             )}
             <h1

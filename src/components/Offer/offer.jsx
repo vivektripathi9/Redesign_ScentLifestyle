@@ -1,194 +1,184 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import Image from "next/image";
+import offerImgA from "./1123483.jpg";
+import offerImgB from "./2148108762.jpg";
+import offerImgC from "./61660.jpg";
+import offerImgD from "./1672.jpg";
+
+/** @type {{id: string, image: string, month: string, scriptTitle: string, title: string, details: string[], price: string}[]} */
+const offers = [
+  {
+    id: "offer-hair",
+    image: "/offers/offers_images/hair.jpg",
+    month: "March",
+    scriptTitle: "Hair",
+    title: "FESTIVE OFFER",
+    subtitle: "GLOBAL + HIGHLIGHTS",
+    price: "₹8,999/-",
+    highlight: "Limited Offer",
+    details: ["Shine", "Dimension", "Premium Hair Color"],
+  },
+  {
+    id: "offer-skin",
+    image: "/offers/offers_images/skin.jpg",
+    month: "March",
+    scriptTitle: "Skin",
+    title: "FREE ORGANIC MANICURE",
+    subtitle: "WITH EVERY CASMARA FACIAL",
+    price: "₹2,999/-",
+    highlight: "Limited Period Offer",
+    details: ["Glow Boosting", "Hydration", "Luxury Skincare"],
+  },
+  {
+    id: "offer-nails",
+    image: "/offers/offers_images/nails.jpg",
+    month: "March",
+    scriptTitle: "Nails",
+    title: "NAIL EXTENSIONS & GEL NAILS",
+    subtitle: "FOR ₹1,999/-",
+    price: "₹1,999/-",
+    highlight: "Limited Time Offer",
+    details: ["Premium Finish", "Long Lasting", "Expert Application"],
+  },
+  {
+    id: "offer-lashes",
+    image: "/offers/offers_images/lashes.jpg",
+    month: "March",
+    scriptTitle: "Lashes",
+    title: "LASH LIFT & EXTENSIONS",
+    subtitle: "FOR ₹2,999/-",
+    price: "₹2,999/-",
+    highlight: "Trending Offer",
+    details: ["Natural Volume", "Long Hold", "Expert Styling"],
+  },
+  {
+    id: "offer-body-therapy",
+    image: "/offers/offers_images/body_therapy.jpg",
+    month: "March",
+    scriptTitle: "Body Therapy",
+    title: "WAXING COMBO",
+    subtitle: "Under Arms + Full Arms + Full Legs",
+    price: "₹2,499/-",
+    highlight: "Smooth Skin",
+    details: ["Hygienic", "Professional Care", "Salon Comfort"],
+  },
+  {
+    id: "offer-bridal-glow",
+    image: offerImgA,
+    month: "April",
+    scriptTitle: "Bridal Glow",
+    title: "RADIANCE PREP PACKAGE",
+    subtitle: "Skin polish + glow facial + finish touch",
+    price: "₹5,499/-",
+    highlight: "Wedding Special",
+    details: ["Brightening", "Hydration", "Camera-Ready Skin"],
+  },
+  {
+    id: "offer-hair-spa",
+    image: offerImgB,
+    month: "April",
+    scriptTitle: "Hair Spa",
+    title: "INTENSE REPAIR THERAPY",
+    subtitle: "Protein spa + scalp detox",
+    price: "₹2,499/-",
+    highlight: "Top Pick",
+    details: ["Smooth Finish", "Damage Control", "Silky Texture"],
+  },
+  {
+    id: "offer-premium-makeup",
+    image: offerImgC,
+    month: "April",
+    scriptTitle: "Makeup",
+    title: "HD PARTY MAKEOVER",
+    subtitle: "Soft glam or bold glam looks",
+    price: "₹3,999/-",
+    highlight: "Limited Slots",
+    details: ["HD Base", "Long Stay", "Professional Finish"],
+  },
+  {
+    id: "offer-complete-care",
+    image: offerImgD,
+    month: "April",
+    scriptTitle: "Complete Care",
+    title: "HEAD TO TOE LUXE",
+    subtitle: "Hair + Skin + Nails combo",
+    price: "₹6,999/-",
+    highlight: "Value Combo",
+    details: ["All-in-One", "Premium Products", "Expert Team"],
+  },
+];
 
 export default function OfferSection() {
-  const offerBanners = [
-    {
-      id: "festive-video-offer",
-      type: "video",
-      src: "/offers/offer-video.mp4",
-      clipStart: 23,
-      clipEnd: 32,
-      title: "Get a FREE Organic Manicure",
-      subtitle: "With Every Casmara Facial",
-      highlight: "Limited Time Offer",
-      ctaLabel: "Book Now",
-      ctaLink: "/offer",
-      titleFont: '"ABChanelCorpo", "Times New Roman", serif',
-      bodyFont: '"Helvetica Neue", Helvetica, Arial, sans-serif',
-    },
-    {
-      id: "festive-video-offer-2",
-      type: "video",
-      src: "/offers/offer-video-2.mp4",
-      clipStart: 37,
-      clipEnd: 51,
-      title: "Complete Waxing Combo",
-      subtitle: "Underarms + Full Arms + Full Legs",
-      description: "Enjoy Silky Smooth Skin at One Price",
-      ctaLabel: "Book Now",
-      ctaLink: "/offer",
-      titleFont: '"Playfair Display", Georgia, "Times New Roman", serif',
-      bodyFont: '"Helvetica Neue", Helvetica, Arial, sans-serif',
-    },
-    {
-      id: "festive-image-offer-1",
-      type: "image",
-      src: "/offers/offer-image-1.jpg",
-      title: "Luxury Nail Extensions & Gel Nails",
-      subtitle: "Starting at Rs1,999",
-      description: "Get Salon-Perfect Nails Today",
-      ctaLabel: "Book Now",
-      ctaLink: "/offer",
-      titleFont: '"Didot", "Bodoni MT", "Times New Roman", serif',
-      bodyFont: '"Helvetica Neue", Helvetica, Arial, sans-serif',
-    },
-    {
-      id: "festive-image-offer-2",
-      type: "image",
-      src: "/offers/offer-image-2.avif",
-      title: "Global + Highlights",
-      subtitle: "Flat Rs8999/-",
-      highlight: "Festive Offer | Limited Time",
-      ctaLabel: "Book Now",
-      ctaLink: "/offer",
-      titleFont: '"Garamond", "Times New Roman", serif',
-      bodyFont: '"Helvetica Neue", Helvetica, Arial, sans-serif',
-    },
-  ];
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % offerBanners.length);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, [offerBanners.length]);
-  const activeOffer = offerBanners[activeIndex];
+  const loopingOffers = [...offers, ...offers];
 
   return (
-    <section className="bg-black px-4 py-10 sm:px-6 sm:py-12 md:px-10 md:py-16">
-      <div className="mx-auto w-full max-w-6xl">
-        <div className="mb-8 text-center sm:mb-10 md:mb-12">
-          <p className="text-xs sm:text-sm tracking-[0.24em] text-[#D4AF37] uppercase">Discounts & Offers</p>
-          <h2
-            className="mt-3 text-2xl sm:text-3xl md:text-4xl text-white font-light tracking-[0.03em]"
-            style={{ fontFamily: '"ABChanelCorpo", Helvetica, Arial, sans-serif', fontWeight: 300 }}
-          >
-            Celebrate More, Spend Less
-          </h2>
-          <p className="mx-auto mt-3 max-w-3xl text-sm sm:text-base text-white/75">
-            A dedicated offers zone for campaign banners. Share your final images and videos, and this section will instantly showcase them with
-            clickable offer buttons.
-          </p>
+    <section id="exclusive-offers" className="bg-white pt-14 pb-10 sm:pt-16 sm:pb-12">
+      <div className="w-full px-4 sm:px-6">
+        <div className="mb-5 text-center sm:mb-7">
+          <h2 className="text-3xl font-light tracking-[0.18em] text-[#161616] sm:text-4xl">EXCLUSIVE OFFERS</h2>
+          <div className="mx-auto mt-3 h-[2px] w-24 bg-[#D4AF37]" />
         </div>
 
-        <article className="relative overflow-hidden rounded-2xl border border-white/20 bg-white/5">
-          <div className="relative h-[260px] sm:h-[320px] md:h-[420px] w-full">
-            {offerBanners.map((offer, index) => (
-              <div
-                key={offer.id}
-                className={`absolute inset-0 transition-opacity duration-700 ${index === activeIndex ? "opacity-100" : "opacity-0 pointer-events-none"}`}
-              >
-                {offer.type === "video" ? (
-                  <video
-                    src={offer.src}
-                    className="h-full w-full object-cover"
-                    autoPlay
-                    muted
-                    loop={!offer.clipEnd}
-                    playsInline
-                    preload="metadata"
-                    onLoadedMetadata={(e) => {
-                      if (typeof offer.clipStart === "number") {
-                        e.currentTarget.currentTime = offer.clipStart;
-                      }
-                    }}
-                    onTimeUpdate={(e) => {
-                      if (typeof offer.clipEnd === "number" && e.currentTarget.currentTime >= offer.clipEnd) {
-                        e.currentTarget.currentTime = offer.clipStart || 0;
-                        void e.currentTarget.play();
-                      }
-                    }}
-                  />
-                ) : (
-                  <img src={offer.src} alt={offer.title} className="h-full w-full object-cover" loading="lazy" />
-                )}
-              </div>
-            ))}
-            <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/65 to-black/45" />
-          </div>
-
-          <div className="absolute inset-0 flex items-center justify-center p-4 sm:p-6 md:p-8">
-            <div
-              key={activeOffer.id}
-              className="max-w-3xl text-center transition-all duration-700 ease-out animate-[fadeUp_700ms_ease-out]"
-            >
-              {activeOffer.highlight && (
-                <p
-                  className="mb-3 inline-flex rounded-full border border-[#E0C15A] bg-[#1a1404]/75 px-3 py-1 text-xs sm:text-sm tracking-[0.14em] uppercase text-[#F2D878] shadow-[0_0_18px_rgba(212,175,55,0.3)]"
-                  style={{ fontFamily: activeOffer.bodyFont }}
-                >
-                  {activeOffer.highlight}
-                </p>
-              )}
-              <h3
-                className="text-2xl sm:text-3xl md:text-4xl text-white font-light leading-tight drop-shadow-[0_2px_12px_rgba(0,0,0,0.75)]"
-                style={{ fontFamily: activeOffer.titleFont, fontWeight: 300 }}
-              >
-                {activeOffer.title}
-              </h3>
-              {activeOffer.subtitle && (
-                <p
-                  className="mt-2 text-base sm:text-lg text-white/95 drop-shadow-[0_2px_10px_rgba(0,0,0,0.7)]"
-                  style={{ fontFamily: activeOffer.bodyFont }}
-                >
-                  {activeOffer.subtitle}
-                </p>
-              )}
-              {activeOffer.description && (
-                <p
-                  className="mt-2 text-sm sm:text-base text-white/90 drop-shadow-[0_2px_8px_rgba(0,0,0,0.65)]"
-                  style={{ fontFamily: activeOffer.bodyFont }}
-                >
-                  {activeOffer.description}
-                </p>
-              )}
+        <div className="offers-marquee-wrap overflow-hidden pb-2">
+          <div className="offers-marquee-track flex w-max gap-2">
+            {loopingOffers.map((offer, index) => (
               <a
-                href={activeOffer.ctaLink}
-                className="mt-5 inline-flex items-center justify-center rounded-full border border-[#F0D57B] bg-[#E0C15A] px-6 py-3 text-sm sm:text-base font-semibold text-black shadow-[0_10px_28px_rgba(224,193,90,0.35)] transition hover:bg-transparent hover:text-[#F0D57B]"
-                style={{ fontFamily: activeOffer.bodyFont }}
+                key={`${offer.id}-${index}`}
+                href="https://scent.zenoti.com/webstoreNew/services"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative block w-[260px] shrink-0 overflow-hidden bg-black sm:w-[240px] lg:w-[280px]"
               >
-                {activeOffer.ctaLabel}
-              </a>
-            </div>
-          </div>
+                <Image
+                  src={offer.image}
+                  alt={`${offer.scriptTitle} ${offer.title}`}
+                  width={420}
+                  height={630}
+                  className="aspect-[2/3] w-full object-cover transition duration-500 group-hover:scale-105"
+                  loading="lazy"
+                  sizes="(max-width: 640px) 260px, (max-width: 1024px) 240px, 280px"
+                />
 
-          <div className="absolute bottom-4 right-4 flex items-center gap-2">
-            {offerBanners.map((offer, index) => (
-              <button
-                key={`${offer.id}-dot`}
-                onClick={() => setActiveIndex(index)}
-                aria-label={`Go to offer slide ${index + 1}`}
-                className={`h-2.5 rounded-full transition-all ${index === activeIndex ? "w-7 bg-[#D4AF37]" : "w-2.5 bg-white/60 hover:bg-white/90"}`}
-              />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/25 to-transparent" />
+
+                <div className="absolute right-4 top-3 text-right text-white">
+                  <p className="text-sm italic">{offer.month}</p>
+                  <p className="text-xs uppercase tracking-[0.18em] opacity-85">Offers</p>
+                </div>
+
+                <div className="absolute inset-x-5 bottom-5 text-white">
+                  <p className="text-xs uppercase tracking-[0.2em] text-white/90">SCENT</p>
+                  <p className="mt-1 text-3xl italic leading-none sm:text-4xl">{offer.scriptTitle}</p>
+                  <p className="mt-1 text-xl font-medium leading-tight tracking-wide sm:text-2xl">{offer.title}</p>
+                  {offer.subtitle ? <p className="mt-1 text-sm leading-snug text-white/95">{offer.subtitle}</p> : null}
+
+                  {offer.price ? <p className="mt-1 text-base font-semibold">{offer.price}</p> : null}
+                  {offer.highlight ? <p className="mt-1 text-sm text-white/95">{offer.highlight}</p> : null}
+                </div>
+              </a>
             ))}
           </div>
-        </article>
-        <style jsx>{`
-          @keyframes fadeUp {
-            from {
-              opacity: 0;
-              transform: translateY(10px);
-            }
-            to {
-              opacity: 1;
-              transform: translateY(0);
-            }
-          }
-        `}</style>
+        </div>
       </div>
+      <style jsx>{`
+        .offers-marquee-track {
+          animation: offers-marquee-scroll 42s linear infinite;
+        }
+
+        .offers-marquee-wrap:hover .offers-marquee-track {
+          animation-play-state: paused;
+        }
+
+        @keyframes offers-marquee-scroll {
+          from {
+            transform: translateX(0);
+          }
+          to {
+            transform: translateX(-50%);
+          }
+        }
+      `}</style>
     </section>
   );
 }

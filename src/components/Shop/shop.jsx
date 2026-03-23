@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 
-const shopCategories = [
+export const shopCategories = [
   {
     name: "Beauty Garage",
     products: [
